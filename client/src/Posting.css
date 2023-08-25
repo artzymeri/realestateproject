@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 20px;
+    font-family: 'Raleway';
+}
+
+.posting-body {
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.posting-card {
+     display: flex;
+     flex-direction: column;
+     width: 600px;
+     height: 600px;
+     border-radius: 25px;
+     border-style: solid;
+     border-width: 0px;
+     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.445);
+     justify-content: space-evenly;
+     align-items: center;
+}
+
+.posting-label {
+    display: flex;
+    align-items: center;
+    width: 80%;
+    height: 30px;
+    background-color: white;
+    padding-left: 10px;
+    border-style: none;
+    position: relative;
+}
+
+.posting-label::after {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    content: '';
+    background-color: black;
+    height: 1px;
+}
+
+.posting-input {
+    display: flex;
+    align-items: center;
+    width: 80%;
+    height: 30px;
+    background-color: white;
+    padding-left: 10px;
+    border-style: none;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 20px;
+}
+
+.file-element {
+    border-style: none;
+}
+
+.posting-button {
+    background-color: rgb(184, 210, 243);
+    width: 300px;
+    height: 50px;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 25px;
+    border-color: none;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.521);
+}
+
+#image {
+    width: 50px;
+}
