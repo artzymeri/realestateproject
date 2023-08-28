@@ -23,7 +23,9 @@
     align-items: center;
     height: 600px;
     width: 600px;
-    box-shadow: 0px 0px 20px black;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.39);
+    border-radius: 20px;
+    gap: 10px;
 }
 
 .login-tab {
@@ -34,6 +36,9 @@
     height: 600px;
     width: 600px;
     box-shadow: 0px 0px 20px black;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.39);
+    border-radius: 20px;
+    gap: 10px;
 }
 
 .already-tab { 
@@ -45,6 +50,13 @@
 
 #profilepicture {
     width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgba(0, 0, 0, 0.521);
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.349);
 }
 
 #username-input {
