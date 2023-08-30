@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 import './RegisterandLogin.css';
 import axios from "axios";
+import HomePageButton from "./HomePageButton";
 
 
 const RegisterandLogin = () => {
@@ -104,6 +105,7 @@ const RegisterandLogin = () => {
 
      return (
          <div className="register-and-login-body">
+            <HomePageButton />
              { registerState ? 
                  
             <div className="register-tab">

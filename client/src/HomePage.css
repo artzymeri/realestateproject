@@ -78,6 +78,8 @@
 
 .login-container:hover  {
     background-color: #fce2c0;
+    box-shadow: 0px 0px 5px #fce2c0;
+    cursor: pointer;
 }
 
 .login-container:hover  .ri-user-fill{
@@ -179,15 +181,17 @@
 }
 
 #estates-button {
+    padding: 10px 10px;
     background-color: #f3c68c;
     border-style: none;
-    padding: 10px;
-    cursor: pointer;
-    transition: 0.2s ease-in-out;
+    border-radius: 3px;
+    transition: 0.1s ease-in-out;
 }
 
 #estates-button:hover {
     background-color: #fce2c0;
+    box-shadow: 0px 0px 5px #fce2c0;
+    cursor: pointer;
 }
 
 .estates-part2 {
