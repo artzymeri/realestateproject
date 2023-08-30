@@ -5,8 +5,7 @@ import HomePage from './HomePage';
 import Estates from './Estates';
 import Posting from './Posting'
 import RegisterandLogin from './RegisterandLogin';
-import ProtectedRoute from './ProtectedRoute'; // Adjust the import path
-
+import ProtectedRoute from './ProtectedRoute';
 const App = () => {
     return (
         <Router>

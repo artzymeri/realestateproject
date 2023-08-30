@@ -3,6 +3,7 @@
     padding: 0;
     box-sizing: border-box;
     text-decoration: none;
+    color: #f3c68c;
 }
 
 .register-and-login-body {
@@ -14,21 +15,57 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    background-image: url(https://cdn.wallpapersafari.com/36/80/EKWszP.gif);
+    z-index: 1;
+}
+
+.register-and-login-body::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    content: '';
+    background-color: rgba(0, 0, 0, 0.473);
+    z-index: 1;
+    backdrop-filter: blur(2px);
 }
 
 .register-tab {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 700px;
+    width: 700px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.39);
+    border-radius: 20px;
+    padding: 5px;
+    background-color: rgb(36, 36, 36);
+    z-index: 2;
+}
+
+.register-left {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+}
+.register-right {
+    width: 50%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 600px;
-    width: 600px;
-    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.39);
-    border-radius: 20px;
-    gap: 10px;
+    gap: 25px;
 }
 
 .login-tab {
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -39,6 +76,8 @@
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.39);
     border-radius: 20px;
     gap: 10px;
+    background-color: rgb(36, 36, 36);
+    z-index: 2;
 }
 
 .already-tab { 
@@ -46,17 +85,18 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 5px;
 }
 
 #profilepicture {
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
     object-fit: cover;
     border-style: solid;
     border-width: 1px;
-    border-color: rgba(0, 0, 0, 0.521);
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.349);
+    border-color: #f3c68c;
+    box-shadow: 0px 0px 5px #f3c68c;
 }
 
 #username-input {
@@ -65,4 +105,74 @@
 
 #password-input {
     text-transform: none;
+}
+
+#register-input {
+    text-transform: none;
+}
+
+.bottom-tab {
+    position: absolute;
+    bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#register-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 3px;
+}
+
+#register-input-file {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 122px;
+}
+
+.name-surname {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo-div {
+    position: absolute;
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-div img {
+    height: 40px;
+}
+
+.logo-div h1 {
+    font-size: 20px;
+}
+
+#register-login-button {
+    background-color: #f3c68c;
+    color: black;
+    border-style: none;
+    padding: 5px;
+    border-radius: 3px;
+    transition: 0.1s ease-in-out;
+}
+
+#register-login-button:hover {
+    background-color: #fce2c0;
+    box-shadow: 0px 0px 5px #fce2c0;
+    cursor: pointer;
 }

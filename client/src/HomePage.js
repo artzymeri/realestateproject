@@ -2,6 +2,11 @@ import React from "react";
 import './HomePage.css';
 import 'remixicon/fonts/remixicon.css';
 import { useNavigate } from 'react-router-dom';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
 
 const HomePage = () => {
 
@@ -26,6 +31,44 @@ const HomePage = () => {
                         <i class="ri-user-fill"></i>
                         <h1>Log in as an agent</h1>
                     </div>
+                 </div>
+                 <div className="swiper-obtainer">
+                    <Swiper
+                        slidesperView={1}
+                    >
+                        <SwiperSlide>
+                            <div className="estates">
+                                <div className="estates-wrapper">
+                                    <div className="estates-part1">
+                                         <div className="estates-check">
+                                            <h1>Browse through your dreams!</h1>
+                                            <button id="estates-button">Click to view estates</button>
+                                         </div>
+                                    </div>
+                                    <div className="estates-part2">
+                                        <div className="estates-part2-filler"></div>           
+                                    </div>
+                                </div>
+                            </div>
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <div className="about">
+                                <div className="about-wrapper">
+                                    <div className="about-part1">
+                                            <h1>About US</h1>
+                                            <p>"At Heimer Real Estate, we're your real estate journey's compass.
+                                                 With years of experience, we specialize in turning aspirations into addresses.
+                                                  Our team's local knowledge and passion create a seamless path in the dynamic property landscape.
+                                                   Join us to discover a personalized approach that transforms real estate goals into achievements."</p>
+                                    </div>
+                                    <div className="about-part2">
+                                        <div className="about-part2-filler"></div>           
+                                    </div>
+                                </div>
+                            </div>
+                        </SwiperSlide>
+                        <SwiperSlide>Slide 3</SwiperSlide>
+                    </Swiper>
                  </div>
                  <div className="bottom-bar">
                      <h1>© HEIMER REAL ESTATE ALL RIGHTS RESERVED 2023</h1>
