@@ -98,6 +98,7 @@ const Posting = () => {
         <>
         <div className="posting-body">
             <div className="posting-card">
+                <div className="logo-div-posting"><img id="login-register-logo" src="logo.png" /><h1>Register Page</h1></div>
                 <label className="posting-label">Selekto Llojin e shpalljes</label>
                 <Select options={postings} onChange={handleSelectedPosting} />
                 <label className="posting-label" >Shëno Titullin</label>
@@ -107,10 +108,11 @@ const Posting = () => {
                 <label className="posting-label">Selekto Lokacionin</label>
                 <Select options={options} onChange={handleSelectedLocation} />
                 <label className="element">Selekto fotografitë</label>
-                <input type="file" multiple  className="posting-input" onChange={handleImages}/>
+                <input type="file" multiple  className="posting-file" onChange={handleImages}/>
                 <button className="posting-button" onClick={submitPosting}>Posto Shpalljen</button>
-                <LogoutButton />
+                
             </div>
+            <LogoutButton />
         </div>
         </>
     )
