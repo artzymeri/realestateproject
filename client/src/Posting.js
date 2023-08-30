@@ -94,19 +94,59 @@ const Posting = () => {
         setPosting(selectedOption.value);
       }
 
+      const customStyles = {
+        control: (provided, state) => ({
+          ...provided,
+          border: '1px solid #ccc',
+          borderRadius: '3px',
+          width : '550px',
+          backgroundColor: '#f3c68c',
+          color: 'black',
+          cursor: 'pointer',
+          zIndex: 5,
+        }),
+        option: (provided, state) => ({
+          ...provided,
+          backgroundColor: state.isSelected ? 'black' : '#f3c68c',
+          color: state.isSelected ? '#f3c68c' : 'black',
+          cursor: 'pointer',
+          zIndex: '5',
+        }),
+        placeholder: (provided) => ({
+            ...provided,
+            color: 'black',
+        }),
+        menu: (provided) => ({
+            ...provided,
+            borderStyle: 'none',
+            cursor: 'pointer',
+            backgroundColor: '#f3c68c',
+            zIndex: 5,
+          }),
+        dropdownIndicator: (provided) => ({
+            ...provided,
+            color: 'black',
+          }),
+        indicatorSeparator: (provided) => ({
+            ...provided,
+            backgroundColor: 'black',
+          }),
+      };
+      
+
     return (
         <>
         <div className="posting-body">
             <div className="posting-card">
-                <div className="logo-div-posting"><img id="login-register-logo" src="logo.png" /><h1>Register Page</h1></div>
+                <div className="logo-div-posting"><img id="login-register-logo" src="logo.png" /><h1>Posting Page</h1></div>
                 <label className="posting-label">Selekto Llojin e shpalljes</label>
-                <Select options={postings} onChange={handleSelectedPosting} />
+                <Select options={postings} styles={customStyles} onChange={handleSelectedPosting} />
                 <label className="posting-label" >Shëno Titullin</label>
                 <input type="text" className="posting-input" onChange={handleTitle}/>
                 <label className="posting-label" >Shëno Metrën Katrorë</label>
                 <input type="number"  className="posting-input"  onChange={handleMeter}/>
                 <label className="posting-label">Selekto Lokacionin</label>
-                <Select options={options} onChange={handleSelectedLocation} />
+                <Select options={options} styles={customStyles} onChange={handleSelectedLocation} />
                 <label className="element">Selekto fotografitë</label>
                 <input type="file" multiple  className="posting-file" onChange={handleImages}/>
                 <button className="posting-button" onClick={submitPosting}>Posto Shpalljen</button>

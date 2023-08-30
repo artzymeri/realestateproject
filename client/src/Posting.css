@@ -50,7 +50,7 @@
      justify-content: space-evenly;
      align-items: center;
      background-color: rgb(36, 36, 36);
-     z-index: 3;
+     z-index: 6;
 }
 
 .posting-label {
@@ -68,13 +68,15 @@
 .posting-input {
     display: flex;
     align-items: center;
-    width: 80%;
+    width: 550px;
     height: 30px;
     padding-left: 10px;
     border-style: none;
     border-style: solid;
     border-width: 1px;
     border-radius: 3px;
+    background-color: #f3c68c;
+    color: black;
 }
 
 .posting-file {
@@ -149,7 +151,7 @@
     border-color: none;
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
     background-color: #f3c68c;
-    z-index: 4;
+    z-index: 3;
 }
 
 .logout-button:hover{

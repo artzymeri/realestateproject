@@ -54,6 +54,12 @@
     justify-content: center;
     gap: 20px;
 }
+
+.register-left :is(input) {
+    background-color: #f3c68c;
+    border-style: none;
+    border-radius: 3px;
+}
 .register-right {
     width: 50%;
     height: 100%;
@@ -78,6 +84,12 @@
     gap: 10px;
     background-color: rgb(36, 36, 36);
     z-index: 2;
+}
+
+.login-tab :is(input) {
+    background-color: #f3c68c;
+    border-style: none;
+    width: 350px;
 }
 
 .already-tab { 
@@ -169,6 +181,7 @@
     padding: 5px;
     border-radius: 3px;
     transition: 0.1s ease-in-out;
+    width: 350px;
 }
 
 #register-login-button:hover {
