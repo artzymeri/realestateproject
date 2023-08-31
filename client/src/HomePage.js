@@ -7,6 +7,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
+import EstatesButton from "./EstatesButton";
 
 const HomePage = () => {
 
@@ -24,7 +25,7 @@ const HomePage = () => {
                  
                  <div className="navigation-bar">
                     <div className="logo-container">
-                         <img id="logo" src="logo.png" />
+                         <img id="logo" src="logo.png"/>
                          <h1>Heimer Real Estate</h1>
                     </div>
                     <div className="login-container" onClick={loginPageNav}>
@@ -42,7 +43,7 @@ const HomePage = () => {
                                     <div className="estates-part1">
                                          <div className="estates-check">
                                             <h1>Browse through your dreams!</h1>
-                                            <button id="estates-button">Click to view estates</button>
+                                            <EstatesButton />
                                          </div>
                                     </div>
                                     <div className="estates-part2">
