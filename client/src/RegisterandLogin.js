@@ -24,11 +24,16 @@ const RegisterandLogin = () => {
     const [profilePicture, setProfilePicture] = useState('https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png');
 
     const profilePictureHandler = (e) =>{
+        if(e.target.files.length > 0){
         const loadedProfilePicture = e.target.files[0];
         const fileReader = new FileReader();
         fileReader.readAsDataURL(loadedProfilePicture);
         fileReader.onload = (e) => {
             setProfilePicture(e.target.result);
+            }
+        }else {
+            window.alert('Select an image')
+            setProfilePicture('https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png')
         }
     }
 
