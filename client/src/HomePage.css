@@ -30,7 +30,7 @@
 .logo-container {
     display: flex;
     flex-direction: row;
-    margin-left: 10px;
+    margin-left: 50px;
     gap: 5px;
     justify-content: center;
     align-items: center;
