@@ -2,7 +2,12 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import './Estates.css';
 import EstatesTestTable from "./EstatesTestTable";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
 
 const Estates = () => {
 
@@ -50,6 +55,17 @@ const Estates = () => {
                             <h1>{estate.meter}</h1>
                             <h1>{estate.location}</h1>
                             <h1>{estate.posting}</h1>
+                            <Swiper
+                                 slidesPerView={1}
+                            >
+                                {estate.images && JSON.parse(estate.images).map((image)=>{
+                                    return(
+                                    <SwiperSlide>
+                                        <img id="slide-image" src={image}/>
+                                    </SwiperSlide>
+                                    )
+                                })}
+                            </Swiper>
                         </div>
                     )
                 })}

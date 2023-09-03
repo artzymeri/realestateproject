@@ -79,3 +79,7 @@
     justify-content: space-evenly;
     align-items: center;
 }
+
+#slide-image{
+    height: 100%;
+}
