@@ -1,28 +1,26 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import './Estates.css';
-import EstatesTestTable from "./EstatesTestTable";
 import { useNavigate } from "react-router-dom";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
+import EstatesFilter from "./EstatesFilter";
 
 const Estates = () => {
 
     const navigate = useNavigate();
 
-    const estatesTable = EstatesTestTable;
+    const bodyElement = document.body;
 
-    const [filterActive, setFilterActive] = useState(false);
+    const estatesFilterElement = document.querySelector('.estates-filter-wrapper');
+
 
     const activateFilter = () => {
-        if(filterActive) {
-            setFilterActive(false)
-        } else {
-            setFilterActive(true);
-        }
+            bodyElement.classList.add('active');
+            estatesFilterElement.classList.add('active');
     };
 
     const toHomePage = () => {
@@ -46,6 +44,7 @@ const Estates = () => {
                 <div className="estates-logo-container" ><img src="logo.png" onClick={toHomePage} /><h1 onClick={toHomePage} >Heimer Real Estate</h1></div>
                 <i class="ri-equalizer-fill" onClick={activateFilter}></i>
             </div>
+            <EstatesFilter/>
             <div className="estates-container">
                 {data.map((estate)=>{
                     return (

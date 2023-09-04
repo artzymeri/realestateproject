@@ -10,6 +10,17 @@
     background-image: url(https://cdn.wallpapersafari.com/36/80/EKWszP.gif);
     background-position: center;
     background-size: cover;
+    position: relative;
+}
+
+.section-one::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    content : '';
 }
 
 .navigation-bar {
@@ -142,7 +153,6 @@
 .swiper {
     height: 100%;
     width: 100%;
-    background-color: rgba(0, 0, 0);
     backdrop-filter: blur(2px);
     cursor: pointer;
 }

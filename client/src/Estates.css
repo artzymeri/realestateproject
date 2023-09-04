@@ -1,6 +1,26 @@
 body {
     overflow-x: hidden;
+    background-color: rgb(36, 36, 36);
 }
+
+body::after{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.0);
+    pointer-events: none;
+    content: '';
+    z-index: 900;
+    transition: 0.2s ease-in-out;
+}
+
+body.active::after{
+    background-color: rgba(0, 0, 0, 0.6);
+    pointer-events: all;
+}
+
 
 
 .estates-navbar {
@@ -132,7 +152,7 @@ body {
 }
 
 .estate-bottom-part-child-characteristics::-webkit-scrollbar {
-    display: none; /* Hide the scrollbar in WebKit (Chrome, Safari, etc.) */
+    display: none;
 }
 
 #characteristic {
@@ -142,7 +162,7 @@ body {
     font-size: 10px;
     padding: 7px;
     background-color: #f3c68c;
-    box-shadow: 0px 0px 6px #f3c68c;
+    box-shadow: 0px 0px 4px #f3c68c;
     color: #000;
     border-radius: 15px;
     flex-shrink: 0;
@@ -200,7 +220,7 @@ body {
     border-radius: 20px;
     color: #f3c68c;
     background-color: rgb(0, 0, 0);
-    z-index: 999;
+    z-index: 500;
     padding: 5px;
     font-size: 17px;
     width: 110px;
@@ -217,7 +237,7 @@ body {
     position: absolute;
     top: 20px;
     left: 20px;
-    z-index: 999;
+    z-index: 500;
     color: #f3c68c;
     background-color: rgb(0, 0, 0);
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
