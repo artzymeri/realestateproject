@@ -46,7 +46,6 @@ const Estates = () => {
                 <div className="estates-logo-container" ><img src="logo.png" onClick={toHomePage} /><h1 onClick={toHomePage} >Heimer Real Estate</h1></div>
                 <i class="ri-equalizer-fill" onClick={activateFilter}></i>
             </div>
-            {filterActive ? <div className="estates-navbar-bottom">aa</div> : null}
             <div className="estates-container">
                 {data.map((estate)=>{
                     return (
