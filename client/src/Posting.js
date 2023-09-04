@@ -13,6 +13,9 @@ const Posting = () => {
     const [images, setImages] = useState([]);
     const [data, setData] = useState([]);
     const [posting , setPosting] = useState();
+    const [estateType, setEstateType] = useState();
+    const [characteristics, setCharacteristics] = useState();
+    const [price, setPrice] = useState('');
 
     const handleTitle = (e) =>{
         setTitle(e.target.value);
@@ -39,8 +42,10 @@ const Posting = () => {
                          imagesArray.push(imageData);
                          if (imagesArray.length === images.length){
                             console.log(imagesArray);
-                            axios.post('http://localhost:8080/insertnewestate', { title: title, meter: meter, location: location, images: imagesArray, posting: posting });
-                            window.alert('Posting has been completed successfully!')
+                            axios.post('http://localhost:8080/insertnewestate', { title: title, meter: meter, location: location, images: imagesArray, posting: posting, type: estateType, characteristics: characteristics, price: price });
+                            window.alert('Posting has been completed successfully!');
+                            window.location.reload();
+
                          }
                     }
                 }
@@ -83,6 +88,26 @@ const Posting = () => {
         { value: 'Zyre', label: 'Zyre' },
         { value: 'Parcelë', label: 'Parcelë' },
 
+      ];
+
+      const type = [
+        { value: 'Në Shitje', label: 'Në Shitje' },
+        { value: 'Me Qera', label: 'Me Qera' },
+        { value: 'Marrëveshje', label: 'Marrëveshje' }
+
+      ];
+
+      const characteristicsOptions= [
+        { value: '2 Banjo', label: '2 Banjo' },
+        { value: 'E renovuar', label: 'E Renovuar' },
+        { value: 'E Mobiluar', label: 'E Mobiluar' },
+        { value: 'E PaMobiluar', label: 'E PaMobiluar' },
+        { value: '24h Rrymë', label: '24h Rrymë' },
+        { value: 'me fletë poseduese', label: 'me fletë poseduese'},
+        { value: 'vendparking', label: 'vendparking'},
+        { value: '1 dhomë gjumi', label: '1 dhomë gjumi'},
+        { value: '2 dhoma gjumi', label: '2 dhoma gjumi'},
+
       ]
       
       const handleSelectedLocation = (selectedOption) => {
@@ -92,6 +117,27 @@ const Posting = () => {
 
       const handleSelectedPosting = (selectedOption) => {
         setPosting(selectedOption.value);
+        console.log(posting)
+      }
+
+      const handleSelectedType = (selectedOption) => {
+        setEstateType(selectedOption.value);
+        console.log(estateType);
+      }
+
+      const handleSelectedCharacteristics = (selectedOptions) => {
+        const characteristicsArray = [];
+        for (const characteristic of selectedOptions) {
+          characteristicsArray.push(characteristic.value);
+        }
+        const stringifiedCharacteristicsArray = JSON.stringify(characteristicsArray);
+        setCharacteristics(stringifiedCharacteristicsArray);
+        console.log(characteristics)
+      }
+
+      const handlePrice = (e) => {
+        setPrice(e.target.value);
+        console.log(price)
       }
 
       const customStyles = {
@@ -103,14 +149,14 @@ const Posting = () => {
           backgroundColor: '#f3c68c',
           color: 'black',
           cursor: 'pointer',
-          zIndex: 5,
+          zIndex: 5,  
         }),
         option: (provided, state) => ({
           ...provided,
           backgroundColor: state.isSelected ? 'black' : '#f3c68c',
           color: state.isSelected ? '#f3c68c' : 'black',
           cursor: 'pointer',
-          zIndex: '5',
+          zIndex: 999,
         }),
         placeholder: (provided) => ({
             ...provided,
@@ -121,7 +167,7 @@ const Posting = () => {
             borderStyle: 'none',
             cursor: 'pointer',
             backgroundColor: '#f3c68c',
-            zIndex: 5,
+            zIndex: 999,
           }),
         dropdownIndicator: (provided) => ({
             ...provided,
@@ -141,8 +187,14 @@ const Posting = () => {
                 <div className="logo-div-posting"><img id="login-register-logo" src="logo.png" /><h1>Posting Page</h1></div>
                 <label className="posting-label">Selekto Llojin e shpalljes</label>
                 <Select options={postings} styles={customStyles} onChange={handleSelectedPosting} />
+                <label className="posting-label">Selekto Gjendjen e shpalljes</label>
+                <Select options={type} styles={customStyles} onChange={handleSelectedType} />
                 <label className="posting-label" >Shëno Titullin</label>
                 <input type="text" className="posting-input" onChange={handleTitle}/>
+                <label className="posting-label">Selekto Karakteristikat e Shpalljes</label>
+                <Select options={characteristicsOptions} styles={customStyles} onChange={handleSelectedCharacteristics} isMulti />
+                <label className="posting-label" >Shëno çmimin</label>
+                <input type="text" className="posting-input" onChange={handlePrice}/>
                 <label className="posting-label" >Shëno Metrën Katrorë</label>
                 <input type="number"  className="posting-input"  onChange={handleMeter}/>
                 <label className="posting-label">Selekto Lokacionin</label>

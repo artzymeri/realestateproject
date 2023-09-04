@@ -24,18 +24,18 @@ db = mysql.createPool({
 const port = 8080;
 
 app.post('/insertnewestate', (req, res) => {
-    const sqlInsert = 'INSERT INTO estates_table (title, meter, location, images, posting) VALUES (?, ?, ?, ?, ?)';
-    const {title, meter, location, images, posting} = req.body;
+    const sqlInsert = 'INSERT INTO estates_table (title, meter, location, images, posting, type, characteristics, price) VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
+    const {title, meter, location, images, posting, type, characteristics, price} = req.body;
     const imagesStringArray = JSON.stringify(images);
 
-    db.query(sqlInsert, [title, meter, location, imagesStringArray, posting] ,(error, result) => {
+    db.query(sqlInsert, [title, meter, location, imagesStringArray, posting, type, characteristics, price] ,(error, result) => {
         if(error){
             console.log(error)
         }else {
             console.log('Success!')
         }
     })
-})
+});
 
 app.get('/get', (req, res)=> {
     const sqlSelect = 'SELECT * FROM estates_table';

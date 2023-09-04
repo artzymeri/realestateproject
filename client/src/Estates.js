@@ -51,11 +51,9 @@ const Estates = () => {
                 {data.map((estate)=>{
                     return (
                         <div className="estate">
-                            <h1>{estate.title}</h1>
-                            <h1>{estate.meter}</h1>
-                            <h1>{estate.location}</h1>
-                            <h1>{estate.posting}</h1>
-                            <Swiper
+                            {estate.posting ? <h1 id="estate-posting">{estate.posting}</h1> : null}
+                            {estate.type ? <h1 id="estate-type">{estate.type}</h1> : null}
+                            <Swiper id="swiper-estate"
                                  slidesPerView={1}
                             >
                                 {estate.images && JSON.parse(estate.images).map((image)=>{
@@ -66,6 +64,22 @@ const Estates = () => {
                                     )
                                 })}
                             </Swiper>
+                            <div className="estate-bottom-part">
+                                <h1 id="estate-title">{estate.title}</h1>
+                                <div className="estate-bottom-part-child-one">
+                                        <h1>{estate.price}</h1>
+                                        <h1 id="estate-meter">{estate.meter} m<sup>&sup2;</sup></h1>
+                                        <h1><i class="ri-map-pin-line"></i> {estate.location}</h1>
+                                </div>
+                                <div className="estate-bottom-part-child-characteristics">
+                                    {estate.characteristics && JSON.parse(estate.characteristics).map((characteristic)=>{return(<h1 id="characteristic">{characteristic}</h1>)})}
+                                    <div id="characteristics-gradient"></div>
+                                    </div>
+                                <div className="estate-bottom-part-child2">
+                                    <button>Shto tek favoritet</button>
+                                    <button>Shiko Detajet</button>
+                                </div>
+                            </div>          
                         </div>
                     )
                 })}
