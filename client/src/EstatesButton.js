@@ -10,7 +10,7 @@ const EstatesButton = () => {
     };
 
     return (
-        <button onClick={handleEstatesPageNav} id='estates-button'>Clicl to View Estates</button>
+        <button onClick={handleEstatesPageNav} id='estates-button'>Click to View Estates</button>
     );
 };
 

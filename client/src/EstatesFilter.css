@@ -152,9 +152,19 @@
 .estates-filter-type {
     display: flex;
     width: 80%;
+    align-items: center;
+    flex-direction: row;
+    gap: 7px;
 }
 
-.estates-filter-type input {
+
+
+.estates-filter-title {
+    display: flex;
+    width: 80%;
+}
+
+.estates-filter-title input {
     flex-grow: 1;
     padding: 5px;
     border-radius: 7px;
@@ -164,14 +174,11 @@
 .estates-filter-posting {
     display: flex;
     width: 80%;
+    align-items: center;
+    flex-direction: row;
+    gap: 7px;
 }
 
-.estates-filter-posting input {
-    flex-grow: 1;
-    padding: 5px;
-    border-radius: 7px;
-    border-style: none;
-}
 
 .estates-filter-location {
     display: flex;
@@ -196,3 +203,4 @@
     border-radius: 7px;
     border-style: none;
 }
+

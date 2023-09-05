@@ -1,0 +1,88 @@
+#estates-filter-button-shtepi {
+    padding: 5px;
+    border-radius: 7px;
+    border-style: none;
+    cursor: pointer;
+    transition: 0.1s ease-in-out;
+}
+
+#estates-filter-button-shtepi:hover{
+    background-color: lightgray;
+    color: black;
+}
+
+#estates-filter-button-shtepi.active {
+    background-color: darkslategray;
+    color: white;
+}
+
+#estates-filter-button-banesa {
+    padding: 5px;
+    border-radius: 7px;
+    border-style: none;
+    cursor: pointer;
+    transition: 0.1s ease-in-out;
+}
+
+#estates-filter-button-banesa:hover{
+    background-color: lightgray;
+    color: black;
+}
+
+#estates-filter-button-banesa.active {
+    background-color: darkslategray;
+    color: white;
+}
+
+#estates-filter-button-zyre {
+    padding: 5px;
+    border-radius: 7px;
+    border-style: none;
+    cursor: pointer;
+    transition: 0.1s ease-in-out;
+}
+
+#estates-filter-button-zyre:hover{
+    background-color: lightgray;
+    color: black;
+}
+
+#estates-filter-button-zyre.active {
+    background-color: darkslategray;
+    color: white;
+}
+#estates-filter-button-lokale {
+    padding: 5px;
+    border-radius: 7px;
+    border-style: none;
+    cursor: pointer;
+    transition: 0.1s ease-in-out;
+}
+
+#estates-filter-button-lokale:hover{
+    background-color: lightgray;
+    color: black;
+}
+
+#estates-filter-button-lokale.active {
+    background-color: darkslategray;
+    color: white;
+}
+
+#estates-filter-button-toka {
+    padding: 5px;
+    border-radius: 7px;
+    border-style: none;
+    cursor: pointer;
+    transition: 0.1s ease-in-out;
+}
+
+#estates-filter-button-toka:hover{
+    background-color: lightgray;
+    color: black;
+}
+
+#estates-filter-button-toka.active {
+    background-color: darkslategray;
+    color: white;
+}

@@ -7,7 +7,8 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
-import './EstatesFilter.css'
+import './EstatesFilter.css';
+import './EstatesFilterButtons.css'
 
 const Estates = () => {
     
@@ -45,13 +46,14 @@ const Estates = () => {
     }
     ,[])
 
-    const [title , setTitle] = useState();
-    const [meter, setMeter] = useState();
-    const [location, setLocation] = useState();
-    const [posting , setPosting] = useState();
-    const [estateType, setEstateType] = useState();
-    const [characteristics, setCharacteristics] = useState();
-    const [price, setPrice] = useState('');
+    const [title , setTitle] = useState('');
+    const [meter, setMeter] = useState('');
+    const [location, setLocation] = useState('');
+    const [posting , setPosting] = useState('');
+    const [estateType, setEstateType] = useState('');
+    const [characteristics, setCharacteristics] = useState('');
+    const [minPrice, setMinPrice] = useState('');
+    const [maxPrice, setMaxPrice] = useState('');
 
     const [filteredData, setFilteredData] = useState([]);
 
@@ -61,6 +63,15 @@ const Estates = () => {
 
         if(location !== '') {
             filtered = filtered.filter((estate)=> estate.location.toLowerCase().includes(location.toLowerCase()))
+        }
+        if(meter !== '') {
+            filtered = filtered.filter((estate)=> parseInt(estate.meter) == parseInt(meter))
+        }
+        if(title !== '') {
+            filtered = filtered.filter((estate)=> estate.title.toLowerCase().includes(title.toLowerCase()))
+        }
+        if(minPrice !== '' && maxPrice !== ''){
+            filtered = filtered.filter((estate)=> parseInt(minPrice) <= estate.price && parseInt(maxPrice) >= estate.price)
         }
         
         setFilteredData(filtered);
@@ -75,6 +86,49 @@ const Estates = () => {
         setTitle('');
         setEstateType('');
         setCharacteristics('');
+        setMinPrice('');
+        setMaxPrice('');
+    }
+
+    const shtepiTrigger = () => {
+        const shtepiButton = document.getElementById('estates-filter-button-shtepi');
+        if(shtepiButton.classList.contains('active')){
+            shtepiButton.classList.remove('active')
+        } else{
+            shtepiButton.classList.add('active')
+        }
+    }
+    const banesaTrigger = () => {
+       const banesaButton = document.getElementById('estates-filter-button-banesa');
+       if(banesaButton.classList.contains('active')){
+        banesaButton.classList.remove('active')
+    } else{
+        banesaButton.classList.add('active')
+    }
+    }
+    const zyreTrigger = () => {
+       const zyreButton = document.getElementById('estates-filter-button-zyre');
+       if(zyreButton.classList.contains('active')){
+        zyreButton.classList.remove('active')
+    } else{
+        zyreButton.classList.add('active')
+    }
+    }
+    const lokaleTrigger = () => {
+        const lokaleButton = document.getElementById('estates-filter-button-lokale');
+        if(lokaleButton.classList.contains('active')){
+            lokaleButton.classList.remove('active')
+        } else{
+            lokaleButton.classList.add('active')
+        }
+    }
+    const tokaTrigger = () => {
+       const tokaButton = document.getElementById('estates-filter-button-toka');
+       if(tokaButton.classList.contains('active')){
+        tokaButton.classList.remove('active')
+       } else{
+        tokaButton.classList.add('active')
+    }
     }
 
     return (
@@ -87,18 +141,28 @@ const Estates = () => {
             <div className="estates-filter-top"><h1>Filter</h1><button onClick={removeFilter}><i class="ri-close-fill"></i></button></div>
             <div className="estates-filter-card">
                 <div className="estates-filter-price">
-                    <input type="number" placeholder="Min Price"/><input type="number" placeholder="max price"/>
+                    <input type="number" value={minPrice} onChange={(e)=>{setMinPrice(e.target.value)}} placeholder="Min Price"/><input type="number" placeholder="max price" value={maxPrice} onChange={(e)=>{setMaxPrice(e.target.value)}} />
+                </div>
+                <div className="estates-filter-title">
+                    <input type="text" value={title} placeholder="Title" onChange={(e)=>{setTitle(e.target.value)}} />
                 </div>
                 <div className="estates-filter-type">
-                    <input type="text" value={estateType} onChange={(e)=>{setEstateType(e.target.value)}} />
-                    </div>
-                <div className="estates-filter-posting"><input type="text" onChange={(e)=>{setPosting(e.target.value)}}  value={posting} />
+                    <button id="estates-filter-button-banesa" onClick={banesaTrigger} >Banesa</button>
+                    <button id="estates-filter-button-shtepi" onClick={shtepiTrigger}>Shtëpi</button>
+                    <button id="estates-filter-button-zyre" onClick={zyreTrigger}>Zyre</button>
+                    <button id="estates-filter-button-lokale" onClick={lokaleTrigger}>Lokale</button>
+                    <button id="estates-filter-button-toka" onClick={tokaTrigger}>Toka</button>
+                </div>
+                <div className="estates-filter-posting">
+                    <button id="estates-filter-button">Në shitje</button>
+                    <button id="estates-filter-button">Me qera</button>
+                    <button id="estates-filter-button">Me marrëveshje</button>
                 </div>
                 <div className="estates-filter-location">
-                    <input type="text" value={location} onChange={(e)=>{setLocation(e.target.value)}}/>
+                    <input type="text" value={location} placeholder="location" onChange={(e)=>{setLocation(e.target.value)}}/>
                     </div>
                 <div className="estates-filter-meter">
-                    <input type="number" onChange={(e)=>{setMeter(e.target.value)}} value={meter} />
+                    <input type="number" placeholder="meter" onChange={(e)=>{setMeter(e.target.value)}} value={meter} />
                 </div>
             </div>
             <div className="estates-filter-bottom"><h1 onClick={resetFilter}>Fshi të gjitha</h1><button onClick={filteringAction}>Kërko</button></div>
@@ -123,7 +187,7 @@ const Estates = () => {
                             <div className="estate-bottom-part">
                                 <h1 id="estate-title">{estate.title}</h1>
                                 <div className="estate-bottom-part-child-one">
-                                        <h1>{estate.price}</h1>
+                                        <h1>{estate.price}€</h1>
                                         <h1 id="estate-meter">{estate.meter} m<sup>&sup2;</sup></h1>
                                         <h1><i class="ri-map-pin-line"></i> {estate.location}</h1>
                                 </div>

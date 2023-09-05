@@ -21,6 +21,7 @@ const HomePage = () => {
 
     return (
         <>
+             <div className="loading"><img src="logo.png"/><h1>Heimer Real Estate</h1></div>
              <div className="section section-one">
                  
                  <div className="navigation-bar">
