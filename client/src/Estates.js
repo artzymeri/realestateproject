@@ -7,9 +7,15 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
-import EstatesFilter from "./EstatesFilter";
+import './EstatesFilter.css'
 
 const Estates = () => {
+    
+
+    const removeFilter = () => {
+        estatesFilterElement.classList.remove('active');
+        bodyElement.classList.remove('active');
+    }
 
     const navigate = useNavigate();
 
@@ -33,10 +39,43 @@ const Estates = () => {
     useEffect(()=>{
         axios.get('http://localhost:8080/get').then((response)=>{
              setData(response.data);
+             setFilteredData(response.data);
              console.log(response.data);
         })
     }
     ,[])
+
+    const [title , setTitle] = useState();
+    const [meter, setMeter] = useState();
+    const [location, setLocation] = useState();
+    const [posting , setPosting] = useState();
+    const [estateType, setEstateType] = useState();
+    const [characteristics, setCharacteristics] = useState();
+    const [price, setPrice] = useState('');
+
+    const [filteredData, setFilteredData] = useState([]);
+
+
+    const filteringAction = () => {
+        let filtered = data;
+
+        if(location !== '') {
+            filtered = filtered.filter((estate)=> estate.location.toLowerCase().includes(location.toLowerCase()))
+        }
+        
+        setFilteredData(filtered);
+        estatesFilterElement.classList.remove('active');
+        bodyElement.classList.remove('active');
+    }
+
+    const resetFilter = () => {
+        setLocation('');
+        setMeter('');
+        setPosting('');
+        setTitle('');
+        setEstateType('');
+        setCharacteristics('');
+    }
 
     return (
         <>
@@ -44,9 +83,28 @@ const Estates = () => {
                 <div className="estates-logo-container" ><img src="logo.png" onClick={toHomePage} /><h1 onClick={toHomePage} >Heimer Real Estate</h1></div>
                 <i class="ri-equalizer-fill" onClick={activateFilter}></i>
             </div>
-            <EstatesFilter/>
+            <div className="estates-filter-wrapper">
+            <div className="estates-filter-top"><h1>Filter</h1><button onClick={removeFilter}><i class="ri-close-fill"></i></button></div>
+            <div className="estates-filter-card">
+                <div className="estates-filter-price">
+                    <input type="number" placeholder="Min Price"/><input type="number" placeholder="max price"/>
+                </div>
+                <div className="estates-filter-type">
+                    <input type="text" value={estateType} onChange={(e)=>{setEstateType(e.target.value)}} />
+                    </div>
+                <div className="estates-filter-posting"><input type="text" onChange={(e)=>{setPosting(e.target.value)}}  value={posting} />
+                </div>
+                <div className="estates-filter-location">
+                    <input type="text" value={location} onChange={(e)=>{setLocation(e.target.value)}}/>
+                    </div>
+                <div className="estates-filter-meter">
+                    <input type="number" onChange={(e)=>{setMeter(e.target.value)}} value={meter} />
+                </div>
+            </div>
+            <div className="estates-filter-bottom"><h1 onClick={resetFilter}>Fshi të gjitha</h1><button onClick={filteringAction}>Kërko</button></div>
+        </div>
             <div className="estates-container">
-                {data.map((estate)=>{
+                {filteredData.map((estate)=>{
                     return (
                         <div className="estate">
                             {estate.posting ? <h1 id="estate-posting">{estate.posting}</h1> : null}
