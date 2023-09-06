@@ -54,6 +54,14 @@ const Estates = () => {
     const [characteristics, setCharacteristics] = useState('');
     const [minPrice, setMinPrice] = useState('');
     const [maxPrice, setMaxPrice] = useState('');
+    const [shtepi, setShtepi] = useState('');
+    const [banesa, setBanesa] = useState('');
+    const [zyre, setZyre] = useState('');
+    const [lokale, setLokale] = useState('');
+    const [toka, setToka] = useState('');
+    const [shitje, setShitje] = useState('');
+    const [qera, setQera] = useState('');
+    const [marreveshje, setMarreveshje] = useState('');
 
     const [filteredData, setFilteredData] = useState([]);
 
@@ -64,6 +72,32 @@ const Estates = () => {
         if(location !== '') {
             filtered = filtered.filter((estate)=> estate.location.toLowerCase().includes(location.toLowerCase()))
         }
+
+        if (shitje !== '' || qera !== '' || marreveshje !== '') {
+            filtered = filtered.filter((estate) => {
+              const estateType = estate.type.toLowerCase();
+              return (
+                (shitje !== '' && estateType === shitje.toLowerCase()) ||
+                (qera !== '' && estateType === qera.toLowerCase()) ||
+                (marreveshje !== '' && estateType === marreveshje.toLowerCase())
+              );
+            });
+        }
+
+        if (shtepi !== '' || banesa !== '' || zyre !== '' || lokale !== '' || toka !== '') {
+            filtered = filtered.filter((estate) => {
+              const estatePosting = estate.posting.toLowerCase();
+              return (
+                (shtepi !== '' && estatePosting === shtepi.toLowerCase()) ||
+                (banesa !== '' && estatePosting === banesa.toLowerCase()) ||
+                (zyre !== '' && estatePosting === zyre.toLowerCase()) ||
+                (lokale !== '' && estatePosting === lokale.toLowerCase()) ||
+                (toka !== '' && estatePosting === toka.toLowerCase())
+              );
+            });
+        }
+          
+
         if(meter !== '') {
             filtered = filtered.filter((estate)=> parseInt(estate.meter) == parseInt(meter))
         }
@@ -80,6 +114,24 @@ const Estates = () => {
     }
 
     const resetFilter = () => {
+        const shitjeButton = document.getElementById('estates-filter-button-shitje');
+        shitjeButton.classList.remove('active');
+        const qeraButton = document.getElementById('estates-filter-button-qera');
+        qeraButton.classList.remove('active');
+        const marreveshjeButton = document.getElementById('estates-filter-button-marreveshje');
+        marreveshjeButton.classList.remove('active');
+        const shtepiButton = document.getElementById('estates-filter-button-shtepi');
+        shtepiButton.classList.remove('active');
+        const banesaButton = document.getElementById('estates-filter-button-banesa');
+        banesaButton.classList.remove('active');
+        const zyreButton = document.getElementById('estates-filter-button-zyre');
+        zyreButton.classList.remove('active');
+        const lokaleButton = document.getElementById('estates-filter-button-lokale');
+        lokaleButton.classList.remove('active');
+        const tokaButton = document.getElementById('estates-filter-button-toka');
+        tokaButton.classList.remove('active');
+        
+        
         setLocation('');
         setMeter('');
         setPosting('');
@@ -88,48 +140,98 @@ const Estates = () => {
         setCharacteristics('');
         setMinPrice('');
         setMaxPrice('');
+        setShitje('');
+        setQera('');
+        setMarreveshje('');
+        setShtepi('');
+        setBanesa('');
+        setZyre('');
+        setLokale('');
+        setToka('');
     }
 
     const shtepiTrigger = () => {
         const shtepiButton = document.getElementById('estates-filter-button-shtepi');
         if(shtepiButton.classList.contains('active')){
-            shtepiButton.classList.remove('active')
+            shtepiButton.classList.remove('active');
+            setShtepi('')
         } else{
-            shtepiButton.classList.add('active')
+            shtepiButton.classList.add('active');
+            setShtepi('Shtëpi');
         }
     }
     const banesaTrigger = () => {
        const banesaButton = document.getElementById('estates-filter-button-banesa');
        if(banesaButton.classList.contains('active')){
-        banesaButton.classList.remove('active')
+        banesaButton.classList.remove('active');
+        setBanesa('')
     } else{
-        banesaButton.classList.add('active')
+        banesaButton.classList.add('active');
+        setBanesa('Banesë')
     }
     }
     const zyreTrigger = () => {
        const zyreButton = document.getElementById('estates-filter-button-zyre');
        if(zyreButton.classList.contains('active')){
-        zyreButton.classList.remove('active')
+        zyreButton.classList.remove('active');
+        setZyre('')
     } else{
-        zyreButton.classList.add('active')
+        zyreButton.classList.add('active');
+        setZyre('Zyre')
     }
     }
     const lokaleTrigger = () => {
         const lokaleButton = document.getElementById('estates-filter-button-lokale');
         if(lokaleButton.classList.contains('active')){
-            lokaleButton.classList.remove('active')
+            lokaleButton.classList.remove('active');
+            setLokale('')
         } else{
             lokaleButton.classList.add('active')
+            setLokale('Lokal')
         }
     }
     const tokaTrigger = () => {
        const tokaButton = document.getElementById('estates-filter-button-toka');
        if(tokaButton.classList.contains('active')){
-        tokaButton.classList.remove('active')
+        tokaButton.classList.remove('active');
+        setToka('')
        } else{
         tokaButton.classList.add('active')
+        setToka('Tokë');
     }
     }
+    const shitjeTrigger = () => {
+        const shitjeButton = document.getElementById('estates-filter-button-shitje');
+        if(shitjeButton.classList.contains('active')){
+            shitjeButton.classList.remove('active');
+            setShitje('');
+           } else {
+            shitjeButton.classList.add('active')
+            setShitje('në shitje');
+            console.log(shitje)
+        }
+    }
+    const qeraTrigger = () => {
+        const qeraButton = document.getElementById('estates-filter-button-qera');
+        if(qeraButton.classList.contains('active')){
+            qeraButton.classList.remove('active');
+            setQera('')
+           } else {
+            qeraButton.classList.add('active')
+            setQera('me qera')
+        }
+    }
+    const marreveshjeTrigger = () => {
+        const marreveshjeButton = document.getElementById('estates-filter-button-marreveshje');
+        if(marreveshjeButton.classList.contains('active')){
+            marreveshjeButton.classList.remove('active');
+            setMarreveshje('')
+           } else {
+            marreveshjeButton.classList.add('active');
+            setMarreveshje('Marrëveshje')
+        }
+    }
+
 
     return (
         <>
@@ -154,9 +256,9 @@ const Estates = () => {
                     <button id="estates-filter-button-toka" onClick={tokaTrigger}>Toka</button>
                 </div>
                 <div className="estates-filter-posting">
-                    <button id="estates-filter-button">Në shitje</button>
-                    <button id="estates-filter-button">Me qera</button>
-                    <button id="estates-filter-button">Me marrëveshje</button>
+                    <button id="estates-filter-button-shitje" onClick={shitjeTrigger}>Në shitje</button>
+                    <button id="estates-filter-button-qera" onClick={qeraTrigger}>Me qera</button>
+                    <button id="estates-filter-button-marreveshje" onClick={marreveshjeTrigger}>Me marrëveshje</button>
                 </div>
                 <div className="estates-filter-location">
                     <input type="text" value={location} placeholder="location" onChange={(e)=>{setLocation(e.target.value)}}/>
@@ -178,7 +280,7 @@ const Estates = () => {
                             >
                                 {estate.images && JSON.parse(estate.images).map((image)=>{
                                     return(
-                                    <SwiperSlide>
+                                    <SwiperSlide id="swiper-slide">
                                         <img id="slide-image" src={image}/>
                                     </SwiperSlide>
                                     )

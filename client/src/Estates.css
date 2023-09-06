@@ -199,11 +199,19 @@ body.active::after{
     cursor: pointer;
 }
 
-
-
-#slide-image{
+#swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
     height: 100%;
-}
+  }
+  
+  #slide-image {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
 
 #swiper-estate {
     border-radius: 10px;

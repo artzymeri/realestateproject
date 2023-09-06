@@ -86,3 +86,57 @@
     background-color: darkslategray;
     color: white;
 }
+
+#estates-filter-button-shitje {
+    padding: 5px;
+    border-radius: 7px;
+    border-style: none;
+    cursor: pointer;
+    transition: 0.1s ease-in-out;
+}
+
+#estates-filter-button-shitje:hover{
+    background-color: lightgray;
+    color: black;
+}
+
+#estates-filter-button-shitje.active {
+    background-color: darkslategray;
+    color: white;
+}
+
+#estates-filter-button-qera {
+    padding: 5px;
+    border-radius: 7px;
+    border-style: none;
+    cursor: pointer;
+    transition: 0.1s ease-in-out;
+}
+
+#estates-filter-button-qera:hover{
+    background-color: lightgray;
+    color: black;
+}
+
+#estates-filter-button-qera.active {
+    background-color: darkslategray;
+    color: white;
+}
+
+#estates-filter-button-marreveshje {
+    padding: 5px;
+    border-radius: 7px;
+    border-style: none;
+    cursor: pointer;
+    transition: 0.1s ease-in-out;
+}
+
+#estates-filter-button-marreveshje:hover{
+    background-color: lightgray;
+    color: black;
+}
+
+#estates-filter-button-marreveshje.active {
+    background-color: darkslategray;
+    color: white;
+}

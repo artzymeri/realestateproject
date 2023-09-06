@@ -86,7 +86,8 @@ const Posting = () => {
         { value: 'Banesë', label: 'Banesë' },
         { value: 'Shtëpi', label: 'Shtëpi' },
         { value: 'Zyre', label: 'Zyre' },
-        { value: 'Parcelë', label: 'Parcelë' },
+        { value: 'Lokal', label: 'Lokal' },
+        { value: 'Tokë', label: 'Tokë' },
 
       ];
 
