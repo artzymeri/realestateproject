@@ -61,7 +61,7 @@ app.get('/getusername/:username', (req, res) => {
 app.post('/login', (req, res) => {
     const { username, password } = req.body;
 
-    const sqlSelect = 'SELECT username, password FROM users_table WHERE username = ?';
+    const sqlSelect = 'SELECT username, password, role, profilepicture FROM users_table WHERE username = ?';
     db.query(sqlSelect, [username], (error, results) => {
         if (error) {
             console.error("Database query error:", error);
@@ -71,8 +71,15 @@ app.post('/login', (req, res) => {
         if (results.length === 0 || !bcrypt.compareSync(password, results[0].password)) {
             res.json({ message: 'Invalid credentials' });
         } else {
-            const token = jwt.sign({ username }, secretKey, { expiresIn: '1h' });
-            res.json({ token });
+            const usernameofUser = results[0].username;
+            const profilePicture = results[0].profilepicture;
+            if (results[0].role === 'admin') {
+                const adminToken = jwt.sign({ username : username, role: 'admin' }, secretKey, { expiresIn : '1h' } )
+                res.json({adminToken, usernameofUser, profilePicture });
+            } else {
+                const agentToken = jwt.sign({ username: username, role: 'agent' }, secretKey, { expiresIn : '1h' });
+                res.json({agentToken});
+            }
         }
     });
 });

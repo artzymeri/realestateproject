@@ -1,11 +1,11 @@
 import React from 'react';
-import { Route, Navigate } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import './ProtectedRoute.css'
 
-const ProtectedRoute = ({ element }) => {
+const ProtectedRouteAgent = ({ element }) => {
     const navigate = useNavigate();
     const token = localStorage.getItem('token');
+    const userRole = localStorage.getItem('userRole');
 
     const loginPageNav = () => {
         return (
@@ -13,7 +13,7 @@ const ProtectedRoute = ({ element }) => {
         )
     }
 
-    if (token) {
+    if (token && userRole == 'agent') {
         return element;
     } else {
         return (
@@ -28,4 +28,4 @@ const ProtectedRoute = ({ element }) => {
     }
 };
 
-export default ProtectedRoute;
+export default ProtectedRouteAgent;

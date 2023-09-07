@@ -84,13 +84,26 @@ const RegisterandLogin = () => {
             username: loginUsername,
             password: loginPassword
         });
-        const token = response.data.token;
-        if (token) {
-            localStorage.setItem('token', token);
-            window.alert('Login successful');
+        const adminToken = response.data.adminToken;
+        const agentToken = response.data.agentToken;
+        const usernameofUser = response.data.usernameofUser;
+        const profilePictureofUser = response.data.profilePicture;
+        if ( adminToken ) {
+            localStorage.setItem('token', adminToken);
+            localStorage.setItem('userRole', 'admin');
+            localStorage.setItem('usernameofUser', usernameofUser);
+            localStorage.setItem('profilepicture', profilePictureofUser);
+            window.alert('Login successful as admin!');
+            console.log(response.data)
+            navigate('/dashboard');
+        } else if ( agentToken ) {
+            localStorage.setItem('token', agentToken);
+            localStorage.setItem('userRole', 'agent')
+            window.alert('Login successful as agent!');
             navigate('/posting');
-        } else {
-            window.alert('Login failed');
+            console.log(response.data)
+        } else{
+            window.alert('Login unsuccessful!')
         }
     };
 

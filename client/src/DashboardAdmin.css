@@ -1,0 +1,120 @@
+.dashboard-body {
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+    width: 100vw;
+    gap: 20px;
+}
+
+.dashboard-left-side {
+    position: relative;
+    width: 280px;
+    height: 100%;
+    background-color: rgb(36, 36, 36);
+    border-radius: 10px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+    color: #f3c68c;
+}
+
+.dashboard-left-side :is(button) {
+    padding: 15px;
+    width: 100%;
+    border-style: none;
+    background-color: rgb(36, 36, 36);
+    border-radius: 10px;
+    color: #f3c68c;
+    text-align: left;
+}
+
+.dashboard-left-side :is(button):hover {
+    background: linear-gradient(to left, #fce2c071 , #fce2c02a);
+    cursor: pointer;
+}
+
+.dashboard-left-side-top {
+    position: absolute;
+    left: 15px;
+    top: 15px;
+}
+
+.dashboard-left-side-top img{
+   height: 50px;
+}
+
+.dashboard-left-side-bottom {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    background-color: #f3c68c;
+    padding: 15px;
+    border-radius: 10px;
+    color: rgb(36, 36, 36);
+    gap: 10px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.dashboard-left-side-bottom:hover {
+    background-color: #fce2c0;;
+}
+
+.dashboard-right-side {
+    display: flex;
+    flex-grow: 1;
+    flex-shrink: 1;
+    background-color: whitesmoke;
+    border-radius: 10px;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.dashboard-right-side-navbar {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    height: 60px;
+    width: 100%;
+    background-color: gray;
+    align-items: center;
+    padding: 10px;
+    gap: 10px;
+    border-radius: 10px;
+}
+
+.dashboard-right-side-navbar h1 {
+    padding-left: 20px;
+}
+
+
+.dashboard-right-side-navbar-name {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    padding-right: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+#hello {
+    font-weight: 300;
+}
+
+#hello-image {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border-style: solid;
+    object-fit: cover;
+    object-position: center;
+    border-width: 1px;
+}
