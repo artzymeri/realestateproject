@@ -1,9 +1,15 @@
 import React from "react";
-import './DashboardAdmin.css';
+import './Dashboard.css';
 import { useNavigate } from 'react-router-dom';
+import Posting from "./Posting";
+import './Posting.css'
 
 const DashboardAdmin = () => {
     const navigate = useNavigate();
+    
+    const toHomePage = () => {
+        navigate('/')
+    }
 
     const handleLogout = () => {
         // Remove the token from localStorage
@@ -20,7 +26,7 @@ const DashboardAdmin = () => {
     return (
         <div className="dashboard-body"> 
             <div className="dashboard-left-side">
-                <div className="dashboard-left-side-top"><img src="logo.png" /></div>
+                <div className="dashboard-left-side-top"><img src="logo.png" onClick={toHomePage}/></div>
                 <button><i class="ri-home-2-line"></i> Home</button>
                 <button><i class="ri-add-box-line"></i> Post Estates</button>
                 <button><i class="ri-edit-box-line"></i> Edit Estates</button>
@@ -36,7 +42,9 @@ const DashboardAdmin = () => {
                     <h1 id="hello">Hello and Welcome, <b>{usernameofUser}</b></h1><img id="hello-image" src={profilePictureofUser} />
                     </div>
                 </div>
+            <Posting />    
             </div>
+            
         </div>
     )
 }

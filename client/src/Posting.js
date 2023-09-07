@@ -144,13 +144,17 @@ const Posting = () => {
       const customStyles = {
         control: (provided, state) => ({
           ...provided,
-          border: '1px solid #ccc',
+          borderStyle: 'solid',
+          borderColor: 'rgb(36,36,36)',
           borderRadius: '3px',
           width : '550px',
           backgroundColor: '#f3c68c',
           color: 'black',
           cursor: 'pointer',
-          zIndex: 5,  
+          zIndex: 5,
+          '&:hover' : {
+            borderColor: 'rgb(36,36,36)'
+          }
         }),
         option: (provided, state) => ({
           ...provided,
@@ -183,30 +187,29 @@ const Posting = () => {
 
     return (
         <>
-        <div className="posting-body">
             <div className="posting-card">
-                <div className="logo-div-posting"><img id="login-register-logo" src="logo.png" /><h1>Posting Page</h1></div>
-                <label className="posting-label">Selekto Llojin e shpalljes</label>
-                <Select options={postings} styles={customStyles} onChange={handleSelectedPosting} />
-                <label className="posting-label">Selekto Gjendjen e shpalljes</label>
-                <Select options={type} styles={customStyles} onChange={handleSelectedType} />
-                <label className="posting-label" >Shëno Titullin</label>
-                <input type="text" className="posting-input" onChange={handleTitle}/>
-                <label className="posting-label">Selekto Karakteristikat e Shpalljes</label>
-                <Select options={characteristicsOptions} styles={customStyles} onChange={handleSelectedCharacteristics} isMulti />
-                <label className="posting-label" >Shëno çmimin</label>
-                <input type="text" className="posting-input" onChange={handlePrice}/>
-                <label className="posting-label" >Shëno Metrën Katrorë</label>
-                <input type="number"  className="posting-input"  onChange={handleMeter}/>
-                <label className="posting-label">Selekto Lokacionin</label>
-                <Select options={options} styles={customStyles} onChange={handleSelectedLocation} />
-                <label className="element">Selekto fotografitë</label>
-                <input type="file" multiple  className="posting-file" onChange={handleImages}/>
-                <button className="posting-button" onClick={submitPosting}>Posto Shpalljen</button>
-                
+              <div className="posting-card-left">
+                  <label className="posting-label">Selekto Llojin e shpalljes</label>
+                  <Select options={postings} styles={customStyles} onChange={handleSelectedPosting} />
+                  <label className="posting-label">Selekto Gjendjen e shpalljes</label>
+                  <Select options={type} styles={customStyles} onChange={handleSelectedType} />
+                  <label className="posting-label" >Shëno Titullin</label>
+                  <input type="text" className="posting-input" onChange={handleTitle}/>
+                  <label className="posting-label">Selekto Karakteristikat e Shpalljes</label>
+                  <Select options={characteristicsOptions} styles={customStyles} onChange={handleSelectedCharacteristics} isMulti />
+              </div>
+              <div className="posting-card-right"><label className="posting-label" >Shëno çmimin</label>
+                  <input type="text" className="posting-input" onChange={handlePrice}/>
+                  <label className="posting-label" >Shëno Metrën Katrorë</label>
+                  <input type="number"  className="posting-input"  onChange={handleMeter}/>
+                  <label className="posting-label">Selekto Lokacionin</label>
+                  <Select options={options} styles={customStyles} onChange={handleSelectedLocation} />
+                  <label className="element">Selekto fotografitë</label>
+                  <input type="file" multiple  className="posting-file" onChange={handleImages}/>
+              </div>
+    
             </div>
-            <LogoutButton />
-        </div>
+            <button className="posting-button" onClick={submitPosting}>Posto Shpalljen</button> 
         </>
     )
 }
