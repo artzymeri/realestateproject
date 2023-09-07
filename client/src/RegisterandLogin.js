@@ -95,12 +95,14 @@ const RegisterandLogin = () => {
             localStorage.setItem('profilepicture', profilePictureofUser);
             window.alert('Login successful as admin!');
             console.log(response.data)
-            navigate('/dashboard');
+            navigate('/dashboardadmin');
         } else if ( agentToken ) {
             localStorage.setItem('token', agentToken);
             localStorage.setItem('userRole', 'agent')
             window.alert('Login successful as agent!');
-            navigate('/posting');
+            localStorage.setItem('usernameofUser', usernameofUser);
+            localStorage.setItem('profilepicture', profilePictureofUser);
+            navigate('/dashboardagent');
             console.log(response.data)
         } else{
             window.alert('Login unsuccessful!')

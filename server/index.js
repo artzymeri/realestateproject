@@ -78,7 +78,7 @@ app.post('/login', (req, res) => {
                 res.json({adminToken, usernameofUser, profilePicture });
             } else {
                 const agentToken = jwt.sign({ username: username, role: 'agent' }, secretKey, { expiresIn : '1h' });
-                res.json({agentToken});
+                res.json({agentToken, usernameofUser, profilePicture});
             }
         }
     });

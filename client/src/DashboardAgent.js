@@ -1,8 +1,8 @@
 import React from "react";
-import './DashboardAdmin.css';
+import './DashboardAgent.css';
 import { useNavigate } from 'react-router-dom';
 
-const DashboardAdmin = () => {
+const DashboardAgent = () => {
     const navigate = useNavigate();
 
     const handleLogout = () => {
@@ -25,7 +25,6 @@ const DashboardAdmin = () => {
                 <button><i class="ri-add-box-line"></i> Post Estates</button>
                 <button><i class="ri-edit-box-line"></i> Edit Estates</button>
                 <button><i class="ri-delete-bin-2-fill"></i> Delete Estates</button>
-                <button><i class="ri-profile-line"></i> Manage Agents</button>
                 <button><i class="ri-settings-2-line"></i> Profile Settings</button>
                 <div className="dashboard-left-side-bottom" onClick={handleLogout}><i class="ri-logout-box-line"></i><p>Logout</p></div>
             </div>
@@ -42,4 +41,4 @@ const DashboardAdmin = () => {
 }
 
 
-export default DashboardAdmin;
+export default DashboardAgent;
