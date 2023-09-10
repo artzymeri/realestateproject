@@ -24,11 +24,11 @@ db = mysql.createPool({
 const port = 8080;
 
 app.post('/insertnewestate', (req, res) => {
-    const sqlInsert = 'INSERT INTO estates_table (title, meter, location, images, posting, type, characteristics, price) VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
-    const {title, meter, location, images, posting, type, characteristics, price} = req.body;
+    const sqlInsert = 'INSERT INTO estates_table (title, meter, location, images, posting, type, characteristics, price, description) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)';
+    const {title, meter, location, images, posting, type, characteristics, price, description} = req.body;
     const imagesStringArray = JSON.stringify(images);
 
-    db.query(sqlInsert, [title, meter, location, imagesStringArray, posting, type, characteristics, price] ,(error, result) => {
+    db.query(sqlInsert, [title, meter, location, imagesStringArray, posting, type, characteristics, price, description] ,(error, result) => {
         if(error){
             console.log(error)
         }else {
@@ -36,6 +36,21 @@ app.post('/insertnewestate', (req, res) => {
         }
     })
 });
+
+app.post('/editestate/:estateId' , (req, res)=> {
+    const {estateId} = req.params;
+    const sqlUpdate = 'UPDATE estates_table SET title=?, meter=?, location=?, images=?, posting=?, type=?, characteristics=?, price=?, description=? WHERE id=?';
+    const {title, meter, location, images, posting, type, characteristics, price, description} = req.body;
+    const imagesStringArray = JSON.stringify(images);
+
+    db.query(sqlUpdate, [title, meter, location, imagesStringArray, posting, type, characteristics, price, description, estateId], (error, result)=> {
+        if(error) {
+            console.log(error);
+        } else {
+            console.log('Successful Edit of Estate!');
+        }
+    })
+})
 
 app.get('/get', (req, res)=> {
     const sqlSelect = 'SELECT * FROM estates_table';

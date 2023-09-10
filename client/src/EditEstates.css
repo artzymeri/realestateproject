@@ -46,3 +46,19 @@
     align-items: center;
 }
 
+.edit-card {
+    width: 700px;
+    height: 700px;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0px 0px 5px black;
+    background-color: black;
+    z-index: 999;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}

@@ -8,7 +8,8 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import './EstatesFilter.css';
-import './EstatesFilterButtons.css'
+import './EstatesFilterButtons.css';
+
 
 const Estates = () => {
     

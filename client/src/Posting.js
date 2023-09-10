@@ -16,6 +16,7 @@ const Posting = () => {
     const [estateType, setEstateType] = useState();
     const [characteristics, setCharacteristics] = useState();
     const [price, setPrice] = useState('');
+    const [description, setDescription] = useState('');
 
     const handleTitle = (e) =>{
         setTitle(e.target.value);
@@ -25,6 +26,10 @@ const Posting = () => {
     }
     const handleImages = (e) =>{
         setImages([...e.target.files]);
+    };
+    
+    const handleDescription = (e) => {
+      setDescription(e.target.value);
     };
 
     
@@ -42,7 +47,7 @@ const Posting = () => {
                          imagesArray.push(imageData);
                          if (imagesArray.length === images.length){
                             console.log(imagesArray);
-                            axios.post('http://localhost:8080/insertnewestate', { title: title, meter: meter, location: location, images: imagesArray, posting: posting, type: estateType, characteristics: characteristics, price: price });
+                            axios.post('http://localhost:8080/insertnewestate', { title: title, meter: meter, location: location, images: imagesArray, posting: posting, type: estateType, characteristics: characteristics, price: price, description: description });
                             window.alert('Posting has been completed successfully!');
                             window.location.reload();
 
@@ -206,6 +211,8 @@ const Posting = () => {
                   <Select options={options} styles={customStyles} onChange={handleSelectedLocation} />
                   <label className="element">Selekto fotografitë</label>
                   <input type="file" multiple  className="posting-file" onChange={handleImages}/>
+                  <label className="element">Shëno përshkrimin e shpalljes</label>
+                  <textarea id="long-text" name="comments" rows="4" cols="50" value={description} onChange={handleDescription} class="unscalable-textarea"></textarea>
               </div>
     
             </div>
