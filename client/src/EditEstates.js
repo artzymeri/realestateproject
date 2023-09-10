@@ -203,44 +203,54 @@ const EditEstates = () => {
         <div className="edit-estates-body">
             <div className="edit-estates-nav"><h1>Edit Estates Tab</h1></div>
             <div className="edit-estates-content">
+                <div className="edit-estates-content-table">
+                    <h1 className="edit-row-line">titulli</h1>
+                    <h1 className="edit-row-line">metri Katrorë</h1>
+                    <h1 className="edit-row-line">lokacioni</h1>
+                    <h1 className="edit-row-line">çmimi</h1>
+                    <h1 className="edit-row-line">shpallja</h1>
+                    <h1 className="edit-row-line">lloji shpalljes</h1>
+                    <h1 className="edit-row-line">butoni për editim</h1>
+                    </div>
                 {estatesData.map((estate, index)=>{
                     return (
                         <div className="edit-estates-row" >
                             {activeEstate === index ? 
                                 <>
-                                <div className="edit-card">
-                                      <h1>{estate.title}</h1>
-                                      <label >Selekto Llojin e shpalljes</label>
-                                      <Select options={postings} styles={customStyles} onChange={handleSelectedPosting} />
-                                      <label>Selekto Gjendjen e shpalljes</label>
-                                      <Select options={type} styles={customStyles} onChange={handleSelectedType} />
-                                      <label>Shëno Titullin</label>
-                                      <input type="text" onChange={handleTitle}/>
-                                      <label>Selekto Karakteristikat e Shpalljes</label>
-                                      <Select options={characteristicsOptions} styles={customStyles} onChange={handleSelectedCharacteristics} isMulti />
-                                      <label>Shëno çmimin</label>
-                                      <input type="text" onChange={handlePrice}/>
-                                      <label >Shëno Metrën Katrorë</label>
-                                      <input type="number"  onChange={handleMeter}/>
-                                      <label >Selekto Lokacionin</label>
-                                      <Select options={options} styles={customStyles} onChange={handleSelectedLocation} />
-                                      <label >Selekto fotografitë</label>
-                                      <input type="file" multiple  onChange={handleImages}/>
-                                      <label >Shëno përshkrimin e shpalljes</label>
-                                      <textarea id="long-text" name="comments" rows="4" cols="50" value={description} onChange={handleDescription}></textarea>
-                                  <button className="edit-button" onClick={submitPosting}>Posto Shpalljen</button> 
-                                  <button onClick={activateEstate}>x</button>
+                                <div className="edit-card-body">
+                                    <div className="edit-card">
+                                        <h1>{estate.title}</h1>
+                                        <label >Selekto Llojin e shpalljes</label>
+                                        <Select options={postings} styles={customStyles} onChange={handleSelectedPosting} />
+                                        <label>Selekto Gjendjen e shpalljes</label>
+                                        <Select options={type} styles={customStyles} onChange={handleSelectedType} />
+                                        <label>Shëno Titullin</label>
+                                        <input type="text" onChange={handleTitle}/>
+                                        <label>Selekto Karakteristikat e Shpalljes</label>
+                                        <Select options={characteristicsOptions} styles={customStyles} onChange={handleSelectedCharacteristics} isMulti />
+                                        <label>Shëno çmimin</label>
+                                        <input type="text" onChange={handlePrice}/>
+                                        <label >Shëno Metrën Katrorë</label>
+                                        <input type="number"  onChange={handleMeter}/>
+                                        <label >Selekto Lokacionin</label>
+                                        <Select options={options} styles={customStyles} onChange={handleSelectedLocation} />
+                                        <label >Selekto fotografitë</label>
+                                        <input type="file" multiple  onChange={handleImages}/>
+                                        <label >Shëno përshkrimin e shpalljes</label>
+                                        <textarea id="long-text" name="comments" rows="4" cols="50" value={description} onChange={handleDescription}></textarea>
+                                    <button className="edit-button" onClick={submitPosting}>Posto Shpalljen</button> 
+                                    <button className="edit-close-button" onClick={activateEstate}>x</button>
+                                    </div>
                                 </div>
-                                
                             </> 
                             : null}
-                            <h1>{estate.title}</h1>
-                            <h1>{estate.meter}</h1>
-                            <h1>{estate.location}</h1>
-                            <h1>{estate.price}</h1>
-                            <h1>{estate.posting}</h1>
-                            <h1>{estate.type}</h1>
-                            <button onClick={()=> activateEstate(index)}>click to edit</button>
+                            <h1 className="edit-row-title edit-row-line">{estate.title}</h1>
+                            <h1 className="edit-row-meter edit-row-line">{estate.meter}</h1>
+                            <h1 className="edit-row-location edit-row-line">{estate.location}</h1>
+                            <h1 className="edit-row-price edit-row-line">{estate.price}</h1>
+                            <h1 className="edit-row-posting edit-row-line">{estate.posting}</h1>
+                            <h1 className="edit-row-type edit-row-line">{estate.type}</h1>
+                            <button className="edit-row-button edit-row-line" onClick={()=> activateEstate(index)}>click to edit</button>
                         </div>
                     )
                 })}
