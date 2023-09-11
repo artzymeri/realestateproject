@@ -46,6 +46,11 @@
     background-color: rgb(36,36,36);
     align-items: center;
     height: 50px;
+    cursor: pointer;
+}
+
+.edit-estates-row:hover {
+    background: linear-gradient(to left, rgb(36,36,36), rgba(36, 36, 36, 0));
 }
 
 .edit-estates-content-table {

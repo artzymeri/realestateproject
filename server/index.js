@@ -55,6 +55,12 @@ app.post('/editestate/:estateId' , (req, res)=> {
 
 app.delete('/deleteestates/:estateId', (req, res)=> {
     const {estateId} = req.params;
+    sqlDelete = 'DELETE FROM estates_table WHERE id=?'
+    db.query(sqlDelete, [estateId], (error, result)=>{
+        if(error){
+            console.log(error);
+        }
+    });
 })
 
 app.get('/get', (req, res)=> {
