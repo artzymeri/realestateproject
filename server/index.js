@@ -52,6 +52,11 @@ app.post('/editestate/:estateId' , (req, res)=> {
     })
 })
 
+
+app.delete('/deleteestates/:estateId', (req, res)=> {
+    const {estateId} = req.params;
+})
+
 app.get('/get', (req, res)=> {
     const sqlSelect = 'SELECT * FROM estates_table';
     db.query(sqlSelect, (error, result) => {

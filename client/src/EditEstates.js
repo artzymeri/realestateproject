@@ -25,6 +25,8 @@ const EditEstates = () => {
         
     }
 
+    
+
     const customStyles = {
         control: (provided, state) => ({
           ...provided,
@@ -45,7 +47,7 @@ const EditEstates = () => {
           backgroundColor: state.isSelected ? 'black' : '#f3c68c',
           color: state.isSelected ? '#f3c68c' : 'black',
           cursor: 'pointer',
-          zIndex: 999,
+          zIndex: '999',
         }),
         placeholder: (provided) => ({
             ...provided,
@@ -56,11 +58,14 @@ const EditEstates = () => {
             borderStyle: 'none',
             cursor: 'pointer',
             backgroundColor: '#f3c68c',
-            zIndex: 999,
+            zIndex: '999',
           }),
         dropdownIndicator: (provided) => ({
             ...provided,
             color: 'black',
+            '&:hover' : {
+              color: 'rgb(36,36,36)'
+            }
           }),
         indicatorSeparator: (provided) => ({
             ...provided,
@@ -170,32 +175,6 @@ const EditEstates = () => {
         console.log(price)
       }
      
-      const submitPosting = () => {
-        if (images.length > 0) {
-            try {
-                const imagesArray = [];
-                for (const file of images){
-                    const fileReader = new FileReader();
-                    fileReader.readAsDataURL(file);
-                    fileReader.onload = (e) => {
-                         const imageData = e.target.result;
-                         imagesArray.push(imageData);
-                         if (imagesArray.length === images.length){
-                            console.log(imagesArray);
-                            axios.post('http://localhost:8080/insertnewestate', { title: title, meter: meter, location: location, images: imagesArray, posting: posting, type: estateType, characteristics: characteristics, price: price, description: description });
-                            window.alert('Posting has been completed successfully!');
-                            window.location.reload();
-
-                         }
-                    }
-                }
-            }catch(error){
-                console.log(error)
-            }
-        } else {
-            window.alert('Please Select Images to upload!')
-        }
-    }
     
    
 
@@ -220,25 +199,43 @@ const EditEstates = () => {
                                 <div className="edit-card-body">
                                     <div className="edit-card">
                                         <h1>{estate.title}</h1>
-                                        <label >Selekto Llojin e shpalljes</label>
-                                        <Select options={postings} styles={customStyles} onChange={handleSelectedPosting} />
-                                        <label>Selekto Gjendjen e shpalljes</label>
-                                        <Select options={type} styles={customStyles} onChange={handleSelectedType} />
-                                        <label>Shëno Titullin</label>
-                                        <input type="text" onChange={handleTitle}/>
-                                        <label>Selekto Karakteristikat e Shpalljes</label>
-                                        <Select options={characteristicsOptions} styles={customStyles} onChange={handleSelectedCharacteristics} isMulti />
-                                        <label>Shëno çmimin</label>
-                                        <input type="text" onChange={handlePrice}/>
-                                        <label >Shëno Metrën Katrorë</label>
-                                        <input type="number"  onChange={handleMeter}/>
-                                        <label >Selekto Lokacionin</label>
-                                        <Select options={options} styles={customStyles} onChange={handleSelectedLocation} />
-                                        <label >Selekto fotografitë</label>
-                                        <input type="file" multiple  onChange={handleImages}/>
-                                        <label >Shëno përshkrimin e shpalljes</label>
-                                        <textarea id="long-text" name="comments" rows="4" cols="50" value={description} onChange={handleDescription}></textarea>
-                                    <button className="edit-button" onClick={submitPosting}>Posto Shpalljen</button> 
+                                        <Select options={postings} placeholder='Selekto llojin e shpalljes' styles={customStyles} onChange={handleSelectedPosting} />
+                                        <Select options={type} placeholder='Selekto Gjendjen e shpalljes' styles={customStyles} onChange={handleSelectedType} />
+                                        <input type="text" placeholder="Shëno Titullin" onChange={handleTitle}/>
+                                        <Select placeholder='Selekto Karakteristikat e Shpalljes' options={characteristicsOptions} styles={customStyles} onChange={handleSelectedCharacteristics} isMulti />
+                                        <input type="text" placeholder="Shëno çmimin" onChange={handlePrice}/>
+                                        <input type="number" placeholder="Shëno Metrën Katrorë"  onChange={handleMeter}/>
+                                        <Select placeholder='Selekto Lokacionin' options={options} styles={customStyles} onChange={handleSelectedLocation} />
+                                        <input className="input-files-edit" type="file" multiple  onChange={handleImages}/>
+                                        <textarea id="long-text" placeholder="Shëno përshkrimin e shpalljes" name="comments" rows="4" cols="50" value={description} onChange={handleDescription}></textarea>
+                                        <button className="edit-button" onClick={
+                                      ()=>{
+
+                                        if (images.length > 0) {
+                                          try {
+                                              const imagesArray = [];
+                                              for (const file of images){
+                                                  const fileReader = new FileReader();
+                                                  fileReader.readAsDataURL(file);
+                                                  fileReader.onload = (e) => {
+                                                       const imageData = e.target.result;
+                                                       imagesArray.push(imageData);
+                                                       if (imagesArray.length === images.length){
+                                                          console.log(imagesArray);
+                                                          axios.post(`http://localhost:8080/editestate/${estate.id}`, { title: title, meter: meter, location: location, images: imagesArray, posting: posting, type: estateType, characteristics: characteristics, price: price, description: description });
+                                                          window.alert('Editing has been completed successfully!');
+                                                          window.location.reload();
+                              
+                                                       }
+                                                  }
+                                              }
+                                          }catch(error){
+                                              console.log(error)
+                                          }
+                                      } else {
+                                          window.alert('Please Select Images to upload!')
+                                      }
+                                    }}>Edito Shpalljen</button> 
                                     <button className="edit-close-button" onClick={activateEstate}>x</button>
                                     </div>
                                 </div>
@@ -250,7 +247,7 @@ const EditEstates = () => {
                             <h1 className="edit-row-price edit-row-line">{estate.price}</h1>
                             <h1 className="edit-row-posting edit-row-line">{estate.posting}</h1>
                             <h1 className="edit-row-type edit-row-line">{estate.type}</h1>
-                            <button className="edit-row-button edit-row-line" onClick={()=> activateEstate(index)}>click to edit</button>
+                            <button className="edit-row-button edit-row-line" onClick={()=> activateEstate(index)}>Edito Shpalljen</button>
                         </div>
                     )
                 })}
