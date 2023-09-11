@@ -53,6 +53,8 @@ app.post('/editestate/:estateId' , (req, res)=> {
 })
 
 
+
+
 app.delete('/deleteestates/:estateId', (req, res)=> {
     const {estateId} = req.params;
     sqlDelete = 'DELETE FROM estates_table WHERE id=?'
@@ -125,6 +127,17 @@ app.post('/register' , (req, res)=>{
         } else {
             console.log(result);
         }
+    })
+});
+
+
+app.post('/requestregister', (req, res)=> {
+    const {username, password, name, surname, number, profilePicture} = req.body;
+    const role = 'agent';
+    const sqlInsert = 'INSERT into users_request_table (username, password, name, surname, number, profilepicture, role) VALUES (?, ?, ?, ?, ?, ?, ?)';
+    const sqlSelect = 'SELECT * FROM users_table WHERE username = ?';
+    db.query(sqlSelect, [username], (error, result)=>{
+
     })
 })
 
