@@ -137,7 +137,17 @@ app.post('/requestregister', (req, res)=> {
     const sqlInsert = 'INSERT into users_request_table (username, password, name, surname, number, profilepicture, role) VALUES (?, ?, ?, ?, ?, ?, ?)';
     const sqlSelect = 'SELECT * FROM users_table WHERE username = ?';
     db.query(sqlSelect, [username], (error, result)=>{
-
+         if(result.length > 0) {
+            res.json({message : 'Username Exists!'})
+         }else{
+            db.query(sqlInsert, [username, password, name, surname, number, profilePicture, role], (error, result)=> {
+                if(error){
+                    console.log(error)
+                }else{
+                    console.log('Register Request Successful!')
+                }
+            })
+         }
     })
 })
 

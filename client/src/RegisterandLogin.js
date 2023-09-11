@@ -12,8 +12,8 @@ const RegisterandLogin = () => {
     const [registerState, setRegisterState] = useState(false);
     const [loginState, setLoginState] = useState(true);
 
-    const [loginUsername, setLoginUsername] = useState();
-    const [loginPassword, setLoginPassword] = useState();
+    const [loginUsername, setLoginUsername] = useState('');
+    const [loginPassword, setLoginPassword] = useState('');
 
     const [name, setName] = useState('');
     const [surname, setSurname] = useState('');
@@ -72,7 +72,7 @@ const RegisterandLogin = () => {
        if (success) {
         window.alert('username exists')
        } else {
-        axios.post('http://localhost:8080/register', { username : registerUsername, password: registerPassword, profilepicture: profilePicture } )
+        axios.post('http://localhost:8080/requestregister', { username : registerUsername, password: registerPassword,name: name , profilepicture: profilePicture } )
        }
 
     }
