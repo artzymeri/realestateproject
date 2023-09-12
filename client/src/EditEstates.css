@@ -50,7 +50,7 @@
 }
 
 .edit-estates-row:hover {
-    background: linear-gradient(to left, rgb(36,36,36), rgba(36, 36, 36, 0));
+    background: linear-gradient(to left, rgb(36,36,36), rgba(36, 36, 36, 0.7));
 }
 
 .edit-estates-content-table {

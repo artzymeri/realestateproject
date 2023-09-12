@@ -142,9 +142,9 @@ app.get('/registerrequests', (req, res)=>{
     })
 });
 
-app.get('/registerrequests/:username', (req, res)=>{
+app.get('/getrequestusername/:username', (req, res)=>{
     const { username } = req.params
-    const sqlSelect = 'SELECT FROM users_request_table WHERE username = ?';
+    const sqlSelect = 'SELECT * FROM users_request_table WHERE username = ?';
     db.query(sqlSelect, [username] ,(error, result)=>{
         if(error){
             console.log(error)
