@@ -180,7 +180,7 @@ const EditEstates = () => {
 
     return(
         <div className="edit-estates-body">
-            <div className="edit-estates-nav"><h1>Edit Estates Tab</h1></div>
+            <div className="edit-estates-nav"><h1>Rubrika për editimin e shpalljeve</h1></div>
             <div className="edit-estates-content">
                 <div className="edit-estates-content-table">
                     <h1 className="edit-row-line">titulli</h1>

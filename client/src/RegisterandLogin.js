@@ -30,7 +30,9 @@ const RegisterandLogin = () => {
         fileReader.readAsDataURL(loadedProfilePicture);
         fileReader.onload = (e) => {
             setProfilePicture(e.target.result);
+            console.log(profilePicture)
             }
+            
         }else {
             window.alert('Select an image')
             setProfilePicture('https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png')
@@ -72,7 +74,7 @@ const RegisterandLogin = () => {
        if (success) {
         window.alert('username exists')
        } else {
-        axios.post('http://localhost:8080/requestregister', { username : registerUsername, password: registerPassword,name: name , profilepicture: profilePicture } )
+        axios.post('http://localhost:8080/requestregister', { username : registerUsername, password: registerPassword, name: name , surname: surname, number: number, profilePicture: profilePicture } )
        }
 
     }

@@ -131,16 +131,26 @@ app.post('/register' , (req, res)=>{
 });
 
 
+app.get('/registerrequests', (req, res)=>{
+    const sqlSelect = 'SELECT * FROM users_request_table'
+    db.query(sqlSelect, (error, result)=>{
+        if(error){
+            console.log(error)
+        }else{
+            res.send(result)
+        }
+    })
+})
+
 app.post('/requestregister', (req, res)=> {
     const {username, password, name, surname, number, profilePicture} = req.body;
-    const role = 'agent';
-    const sqlInsert = 'INSERT into users_request_table (username, password, name, surname, number, profilepicture, role) VALUES (?, ?, ?, ?, ?, ?, ?)';
+    const sqlInsert = 'INSERT into users_request_table (username, password, name, surname, number, profilepicture) VALUES (?, ?, ?, ?, ?, ?)';
     const sqlSelect = 'SELECT * FROM users_table WHERE username = ?';
     db.query(sqlSelect, [username], (error, result)=>{
          if(result.length > 0) {
             res.json({message : 'Username Exists!'})
          }else{
-            db.query(sqlInsert, [username, password, name, surname, number, profilePicture, role], (error, result)=> {
+            db.query(sqlInsert, [username, password, name, surname, number, profilePicture], (error, result)=> {
                 if(error){
                     console.log(error)
                 }else{
