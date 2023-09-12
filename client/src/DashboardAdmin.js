@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import './Dashboard.css';
 import { useNavigate } from 'react-router-dom';
 import Posting from "./Posting";
@@ -8,6 +8,7 @@ import EditEstates from "./EditEstates";
 import DeleteEstates from "./DeleteEstates";
 import ManageAgents from "./ManageAgents";
 import ProfileSettings from "./ProfileSettings";
+import axios from "axios";
 
 const DashboardAdmin = () => {
     const navigate = useNavigate();
@@ -17,6 +18,13 @@ const DashboardAdmin = () => {
     }
 
 
+    const [requestsData, setRequestsData] = useState([]);
+
+    useEffect(()=>{
+        axios.get('http://localhost:8080/registerrequests').then((response)=>{
+            setRequestsData(response.data);
+        })
+    },[])
 
     const activateHome = () => {
         setHome(true);
@@ -101,7 +109,7 @@ const DashboardAdmin = () => {
                 <button onClick={activatePostEstates}><i class="ri-add-box-line"></i> Post Estates</button>
                 <button onClick={activateEditEstates}><i class="ri-edit-box-line"></i> Edit Estates</button>
                 <button onClick={activateDeleteEstates}><i class="ri-delete-bin-2-fill"></i> Delete Estates</button>
-                <button onClick={activateManageAgents}><i class="ri-profile-line"></i> Manage Agents</button>
+                <button onClick={activateManageAgents}><i class="ri-profile-line"></i> Manage Agents {requestsData && requestsData.length > 0 ? <p id="requests-data-number">{requestsData.length}</p> : null}</button>
                 <button onClick={activateProfileSettings}><i class="ri-settings-2-line"></i> Profile Settings</button>
                 <div className="dashboard-left-side-bottom" onClick={handleLogout}><i class="ri-logout-box-line"></i><p>Logout</p></div>
             </div>
