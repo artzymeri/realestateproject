@@ -74,7 +74,16 @@ const RegisterandLogin = () => {
        if (success) {
         window.alert('username exists')
        } else {
-        axios.post('http://localhost:8080/requestregister', { username : registerUsername, password: registerPassword, name: name , surname: surname, number: number, profilePicture: profilePicture } )
+
+            axios.get(`http://localhost:8080/getrequestusername/${registerUsername}`).then((response)=>{
+                const exists = response.data.exists;
+                if(exists){
+                    window.alert('username exists')
+                }else{
+                    axios.post('http://localhost:8080/requestregister', { username : registerUsername, password: registerPassword, name: name , surname: surname, number: number, profilePicture: profilePicture } )
+                    window.alert('successful register request')
+                }
+            })
        }
 
     }

@@ -140,6 +140,20 @@ app.get('/registerrequests', (req, res)=>{
             res.send(result)
         }
     })
+});
+
+app.get('/registerrequests/:username', (req, res)=>{
+    const { username } = req.params
+    const sqlSelect = 'SELECT FROM users_request_table WHERE username = ?';
+    db.query(sqlSelect, [username] ,(error, result)=>{
+        if(error){
+            console.log(error)
+        }else if(result.length > 0){
+            res.json({success : true})
+        }else {
+            res.json({ success: false })
+        }
+    })
 })
 
 app.post('/requestregister', (req, res)=> {
@@ -148,7 +162,7 @@ app.post('/requestregister', (req, res)=> {
     const sqlSelect = 'SELECT * FROM users_table WHERE username = ?';
     db.query(sqlSelect, [username], (error, result)=>{
          if(result.length > 0) {
-            res.json({message : 'Username Exists!'})
+            res.json({ success : true })
          }else{
             db.query(sqlInsert, [username, password, name, surname, number, profilePicture], (error, result)=> {
                 if(error){
