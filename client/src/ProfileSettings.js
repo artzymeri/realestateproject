@@ -25,7 +25,7 @@ const ProfileSettings = () => {
                     </div>
                 </div>
                 <div className="profile-change-username profile">
-                    <i class="ri-lock-password-fill"></i> Change Username & password
+                    <i class="ri-lock-password-fill"></i> Change Password
                 </div>
                 <div className="profile-change-name-surname profile">
                     <i class="ri-edit-line"></i> Change Name, Surname and Number

@@ -46,7 +46,7 @@ const ManageAgents = () => {
                                     console.log(error)
                                 }
                             }}>Delete</button>
-                            <button className="agent-button">Aprove</button>
+                            <button className="agent-button">Approve</button>
                         </div>
                     </div>
                     )

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import './Posting.css';
-import LogoutButton from "./LogoutButton";
 import Select from 'react-select';
 import axios from 'axios';
 
@@ -152,7 +151,7 @@ const Posting = () => {
           borderStyle: 'solid',
           borderColor: 'rgb(36,36,36)',
           borderRadius: '3px',
-          width : '550px',
+          width : '350px',
           backgroundColor: '#f3c68c',
           color: 'black',
           cursor: 'pointer',
@@ -193,30 +192,28 @@ const Posting = () => {
     return (
         <>
             <div className="posting-card">
-              <div className="posting-card-left">
-                  <label className="posting-label">Selekto Llojin e shpalljes</label>
-                  <Select options={postings} styles={customStyles} onChange={handleSelectedPosting} />
-                  <label className="posting-label">Selekto Gjendjen e shpalljes</label>
-                  <Select options={type} styles={customStyles} onChange={handleSelectedType} />
-                  <label className="posting-label" >Shëno Titullin</label>
-                  <input type="text" className="posting-input" onChange={handleTitle}/>
-                  <label className="posting-label">Selekto Karakteristikat e Shpalljes</label>
-                  <Select options={characteristicsOptions} styles={customStyles} onChange={handleSelectedCharacteristics} isMulti />
+                <div className="posting-nav">
+                  <h1>Posting Estates Tab</h1>
+                </div>
+                <div className="posting-card-content">
+                    <Select placeholder='Type of Posting' options={postings} styles={customStyles} onChange={handleSelectedPosting} />
+                    <Select placeholder='State of Posting' options={type} styles={customStyles} onChange={handleSelectedType} />
+                    <input placeholder="Title" type="text" className="posting-input" onChange={handleTitle}/>
+                    <Select placeholder='Characteristics' options={characteristicsOptions} styles={customStyles} onChange={handleSelectedCharacteristics} isMulti />
+
+                    <input placeholder="Price" type="text" className="posting-input" onChange={handlePrice}/>
+
+                    <input placeholder="square meters" type="number"  className="posting-input"  onChange={handleMeter}/>
+
+                    <Select placeholder='location' options={options} styles={customStyles} onChange={handleSelectedLocation} />
+
+                    <input type="file" multiple  className="posting-file" onChange={handleImages}/>
+
+                    <textarea placeholder="description of posting" id="long-text" name="comments" rows="8" cols="50" value={description} onChange={handleDescription} class="unscalable-textarea"></textarea>
+                    <button className="posting-button" onClick={submitPosting}>Posto Shpalljen</button> 
+                </div>
               </div>
-              <div className="posting-card-right"><label className="posting-label" >Shëno çmimin</label>
-                  <input type="text" className="posting-input" onChange={handlePrice}/>
-                  <label className="posting-label" >Shëno Metrën Katrorë</label>
-                  <input type="number"  className="posting-input"  onChange={handleMeter}/>
-                  <label className="posting-label">Selekto Lokacionin</label>
-                  <Select options={options} styles={customStyles} onChange={handleSelectedLocation} />
-                  <label className="element">Selekto fotografitë</label>
-                  <input type="file" multiple  className="posting-file" onChange={handleImages}/>
-                  <label className="element">Shëno përshkrimin e shpalljes</label>
-                  <textarea id="long-text" name="comments" rows="4" cols="50" value={description} onChange={handleDescription} class="unscalable-textarea"></textarea>
-              </div>
-    
-            </div>
-            <button className="posting-button" onClick={submitPosting}>Posto Shpalljen</button> 
+            
         </>
     )
 }
