@@ -4,7 +4,8 @@ import './ManageAgents.css';
 
 const ManageAgents = () => {
 
-    const [requestData, setRequestData] = useState([])
+    const [requestData, setRequestData] = useState([]);
+    const [refreshNumber, setRefreshNumber] = useState(1);
 
 
     useEffect(()=>{
@@ -12,7 +13,7 @@ const ManageAgents = () => {
             setRequestData(response.data)
         })
     }
-    ,[])
+    ,[refreshNumber])
 
     console.log(requestData)
 
@@ -36,7 +37,15 @@ const ManageAgents = () => {
                             <img className="agent-profilepicture" src={agent.profilepicture} />
                         </div>
                         <div className="manage-agents-row-line manage-agents-button-container">
-                            <button className="agent-button">Delete</button>
+                            <button className="agent-button" onClick={()=>{
+                                try{
+                                    axios.delete(`http://localhost:8080/deleteregisterrequest/${agent.id}`);
+                                    window.alert('Agent Register Request Deleted!');
+                                    setRefreshNumber(refreshNumber + 1)
+                                }catch(error){
+                                    console.log(error)
+                                }
+                            }}>Delete</button>
                             <button className="agent-button">Aprove</button>
                         </div>
                     </div>

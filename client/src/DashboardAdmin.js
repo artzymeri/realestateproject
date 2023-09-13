@@ -11,6 +11,8 @@ import ProfileSettings from "./ProfileSettings";
 import axios from "axios";
 
 const DashboardAdmin = () => {
+    
+
     const navigate = useNavigate();
     
     const toHomePage = () => {
@@ -94,12 +96,20 @@ const DashboardAdmin = () => {
         localStorage.removeItem('token');
         localStorage.removeItem('usernameofUser');
         localStorage.removeItem('profilepicture');
+        localStorage.removeItem('name');
+        localStorage.removeItem('surname');
+        localStorage.removeItem('number');
         
 
         navigate('/registerandlogin');
     };
     const profilePictureofUser = localStorage.getItem('profilepicture');
     const usernameofUser = localStorage.getItem('usernameofUser');
+    const nameofUser = localStorage.getItem('name');
+    const surnameofUser = localStorage.getItem('surname');
+    const numberofUser = localStorage.getItem('number');
+
+    console.log(localStorage)
 
     return (
         <div className="dashboard-body"> 
@@ -117,7 +127,7 @@ const DashboardAdmin = () => {
                 <div className="dashboard-right-side-navbar">
                     <h1>{usernameofUser}'s Dashboard</h1>
                     <div className="dashboard-right-side-navbar-name">
-                    <h1 id="hello">Hello and Welcome, <b>{usernameofUser}</b></h1><img id="hello-image" src={profilePictureofUser} />
+                    <h1 id="hello">Hello and Welcome, <b>{nameofUser}</b></h1><img id="hello-image" src={profilePictureofUser} />
                     </div>
                 </div>
             {home ? <HomeDashboard /> : null}

@@ -104,13 +104,18 @@ const RegisterandLogin = () => {
         const agentToken = response.data.agentToken;
         const usernameofUser = response.data.usernameofUser;
         const profilePictureofUser = response.data.profilePicture;
+        const name = response.data.name;
+        const surname = response.data.surname;
+        const number = response.data.number;
         if ( adminToken ) {
             localStorage.setItem('token', adminToken);
             localStorage.setItem('userRole', 'admin');
             localStorage.setItem('usernameofUser', usernameofUser);
             localStorage.setItem('profilepicture', profilePictureofUser);
+            localStorage.setItem('name', name);
+            localStorage.setItem('surname', surname);
+            localStorage.setItem('number', number);
             window.alert('Login successful as admin!');
-            console.log(response.data)
             navigate('/dashboardadmin');
         } else if ( agentToken ) {
             localStorage.setItem('token', agentToken);
@@ -118,8 +123,10 @@ const RegisterandLogin = () => {
             window.alert('Login successful as agent!');
             localStorage.setItem('usernameofUser', usernameofUser);
             localStorage.setItem('profilepicture', profilePictureofUser);
+            localStorage.setItem('name', name);
+            localStorage.setItem('surname', surname);
+            localStorage.setItem('number', number);
             navigate('/dashboardagent');
-            console.log(response.data)
         } else{
             window.alert('Login unsuccessful!')
         }

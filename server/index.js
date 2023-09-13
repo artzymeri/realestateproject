@@ -63,7 +63,19 @@ app.delete('/deleteestates/:estateId', (req, res)=> {
             console.log(error);
         }
     });
-})
+});
+
+app.delete('/deleteregisterrequest/:agentId', (req, res)=>{
+    sqlDelete = 'DELETE FROM users_request_table WHERE id = ?';
+    const {agentId} = req.params;
+    db.query(sqlDelete, [agentId], (error, result)=>{
+        if(error){
+            console.log(error)
+        }else{
+            console.log('Agent Register Request Deleted Successfully!')
+        }
+    })
+});
 
 app.get('/get', (req, res)=> {
     const sqlSelect = 'SELECT * FROM estates_table';
@@ -89,7 +101,7 @@ app.get('/getusername/:username', (req, res) => {
 app.post('/login', (req, res) => {
     const { username, password } = req.body;
 
-    const sqlSelect = 'SELECT username, password, role, profilepicture FROM users_table WHERE username = ?';
+    const sqlSelect = 'SELECT username, password, name, surname, number, profilepicture, role FROM users_table WHERE username = ?';
     db.query(sqlSelect, [username], (error, results) => {
         if (error) {
             console.error("Database query error:", error);
@@ -101,12 +113,15 @@ app.post('/login', (req, res) => {
         } else {
             const usernameofUser = results[0].username;
             const profilePicture = results[0].profilepicture;
+            const name = results[0].name;
+            const surname = results[0].surname;
+            const number = results[0].number;
             if (results[0].role === 'admin') {
                 const adminToken = jwt.sign({ username : username, role: 'admin' }, secretKey, { expiresIn : '1h' } )
-                res.json({adminToken, usernameofUser, profilePicture });
+                res.json({adminToken, usernameofUser, profilePicture, name, surname, number });
             } else {
                 const agentToken = jwt.sign({ username: username, role: 'agent' }, secretKey, { expiresIn : '1h' });
-                res.json({agentToken, usernameofUser, profilePicture});
+                res.json({agentToken, usernameofUser, profilePicture, name, surname, number});
             }
         }
     });

@@ -68,11 +68,17 @@ const DashboardAgent = () => {
         localStorage.removeItem('token');
         localStorage.removeItem('usernameofUser');
         localStorage.removeItem('profilepicture');
+        localStorage.removeItem('name');
+        localStorage.removeItem('surname');
+        localStorage.removeItem('number');
         
         navigate('/registerandlogin');
     };
     const profilePictureofUser = localStorage.getItem('profilepicture');
     const usernameofUser = localStorage.getItem('usernameofUser');
+    const nameofUser = localStorage.getItem('name');
+    const surnameofUser = localStorage.getItem('surname');
+    const numberofUser = localStorage.getItem('number');
 
     return (
         <div className="dashboard-body"> 
