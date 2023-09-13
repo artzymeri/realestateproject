@@ -6,39 +6,32 @@ const ProfileSettings = () => {
     const nameofUser = localStorage.getItem('name');
     const surnameofUser = localStorage.getItem('surname');
     const numberofUser = localStorage.getItem('number');
-    const usernameofUser = localStorage.getItem('username');
+    const usernameofUser = localStorage.getItem('usernameofUser');
     const profilePictureofUser = localStorage.getItem('profilepicture');
-
 
     return(
         <div className="profile-settings-body">
             <div className="profile-settings-nav"><h1>{nameofUser} {surnameofUser}'s Profile Settings Tab</h1></div>
             <div className="profile-settings-content">
-                <div className="profile-settings-content-left">
-                    <div className="profile-settings-element">
-                        <h1>Change Profile Picture</h1>
+                <div className="profile-box profile">
+                    <div className="profile-box-photo">
+                         <img src={profilePictureofUser} />
                     </div>
-                    <div className="profile-settings-element">
-                        <h1>Change Name and Surname</h1>
-                    </div>
-                    <div className="profile-settings-element">
-                        <h1>Change Number</h1>
-                    </div>
-                    <div className="profile-settings-element">
-                        <h1>Change password</h1>
+                    <div className="profile-box-details">
+                         <div>{nameofUser}</div>
+                         <div>{surnameofUser}</div>
+                         <div>{numberofUser}</div>
+                         <div>@ {usernameofUser}</div>
                     </div>
                 </div>
-                <div className="profile-settings-content-right">
-                    <div className="profile-settings-element">
-                        <h1>Name : {nameofUser}</h1>
-                    </div>
-                    <div className="profile-settings-element">
-                        <h1>Surname : {surnameofUser}</h1>
-                    </div>
-                    <div className="profile-settings-element">
-                        <h1>Number : {numberofUser}</h1>
-                    </div>
-                    <div className="profile-settings-profile-picture"><img src={profilePictureofUser} /></div>
+                <div className="profile-change-username profile">
+                    <i class="ri-lock-password-fill"></i> Change Username & password
+                </div>
+                <div className="profile-change-name-surname profile">
+                    <i class="ri-edit-line"></i> Change Name, Surname and Number
+                </div>
+                <div className="profile-change-profilepicture profile">
+                    <i class="ri-image-edit-fill"></i> Change your profile picture 
                 </div>
             </div>
         </div>
