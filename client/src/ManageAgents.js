@@ -6,6 +6,7 @@ const ManageAgents = () => {
 
     const [requestData, setRequestData] = useState([]);
     const [refreshNumber, setRefreshNumber] = useState(1);
+    
 
 
     useEffect(()=>{
@@ -46,7 +47,18 @@ const ManageAgents = () => {
                                     console.log(error)
                                 }
                             }}>Delete</button>
-                            <button className="agent-button">Approve</button>
+                            <button className="agent-button" onClick={()=>{
+                                const {username, name, surname, password, number, profilepicture }= agent;
+                                try{
+                                    axios.post('http://localhost:8080/register', { username : username, password: password, name: name , surname: surname, number: number, profilepicture: profilepicture } );   
+                                    axios.delete(`http://localhost:8080/deleteregisterrequest/${agent.id}`);
+                                    window.alert('Successful Approval!')
+                                }
+                                catch(error){
+                                    console.log(error);
+                                    window.alert('Error!')
+                                }
+                            }}>Approve</button>
                         </div>
                     </div>
                     )
@@ -57,3 +69,53 @@ const ManageAgents = () => {
 }
 
 export default ManageAgents;
+
+
+
+
+
+
+// const register = async () =>
+//      { 
+//        const response = await axios.get(`http://localhost:8080/getusername/${registerUsername}`);
+//        const success = await response.data.success;
+//        if (success) {
+//         window.alert('username exists')
+//        } else {
+
+//             axios.get(`http://localhost:8080/getrequestusername/${registerUsername}`).then((response)=>{
+//                 const success = response.data.success;
+//                 if(success){
+//                     window.alert('username exists')
+//                 }else{
+//                     axios.post('http://localhost:8080/requestregister', { username : registerUsername, password: registerPassword, name: name , surname: surname, number: number, profilePicture: profilePicture } )
+//                     window.alert('successful register request');
+//                     setRegisterUsername('');
+//                     setRegisterPassword('');
+//                     setName('');
+//                     setSurname('');
+//                     setNumber('');
+//                     setProfilePicture('https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png')
+//                 }
+//             })
+//        }
+
+//     }
+
+
+
+// app.post('/register' , (req, res)=>{
+//     const sqlInsert = 'INSERT INTO users_table (username, password, role, profilepicture) VALUES (?, ?, ?, ?)';
+//     const {username, password, profilepicture} = req.body;
+//     const role = 'none';
+
+//     const hashedPassword = bcrypt.hashSync(password, 10); 
+
+//     db.query(sqlInsert, [username, hashedPassword, role, profilepicture], (error, result) => {
+//         if(error) {
+//             console.log(error);
+//         } else {
+//             console.log(result);
+//         }
+//     })
+// });

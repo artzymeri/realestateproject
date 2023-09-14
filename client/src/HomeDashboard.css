@@ -1,10 +1,38 @@
 .home-dashboard-content {
-    display: flex;
-    background-color: rgb(36,36,36);
-    flex-grow: 1;
     border-radius: 10px;
-    box-shadow: 0px 2px 3px rgba(36, 36, 36, 0.479);
-    padding: 10px;
-    color: #f3c68c;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 20px;
+    position: relative;
+    overflow-y: auto;
+    height: 100%;
+    background-color: rgb(36,36,36);
+    padding: 20px;
+    flex-wrap: wrap;
+}
+
+.home-dashboard-element {
+    padding: 20px;
+    background-color: #f3c68c;
+    color: rgb(36,36,36);
+    border-radius: 10px;
+    display: flex;
     flex-direction: row;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+
+.home-number-data {
+    background-color: rgb(36,36,36);
+    width: 25px;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #f3c68c;
+    padding-bottom: 3px;
+    border-radius: 50%;
+    flex-shrink: 0;
 }

@@ -93,9 +93,9 @@ const DashboardAgent = () => {
             </div>
             <div className="dashboard-right-side">
                 <div className="dashboard-right-side-navbar">
-                    <h1>{usernameofUser}'s Dashboard</h1>
+                    <h1>{nameofUser} {surnameofUser}'s Dashboard</h1>
                     <div className="dashboard-right-side-navbar-name">
-                    <h1 id="hello">Hello and Welcome, <b>{usernameofUser}</b></h1><img id="hello-image" src={profilePictureofUser} />
+                    <h1 id="hello">Hello and Welcome, <b>{nameofUser}</b></h1><img id="hello-image" src={profilePictureofUser} />
                     </div>
                 </div>
                 {home ? <HomeDashboard /> : null}

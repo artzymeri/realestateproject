@@ -130,13 +130,12 @@ app.post('/login', (req, res) => {
 
 
 app.post('/register' , (req, res)=>{
-    const sqlInsert = 'INSERT INTO users_table (username, password, role, profilepicture) VALUES (?, ?, ?, ?)';
-    const {username, password, profilepicture} = req.body;
-    const role = 'none';
+    const sqlInsert = 'INSERT INTO users_table (username, password, name, surname, number, profilepicture) VALUES (?, ?, ?, ?, ?, ?)';
+    const {username, password, name, surname, number, profilepicture} = req.body;
 
     const hashedPassword = bcrypt.hashSync(password, 10); 
 
-    db.query(sqlInsert, [username, hashedPassword, role, profilepicture], (error, result) => {
+    db.query(sqlInsert, [username, hashedPassword, name, surname, number, profilepicture], (error, result) => {
         if(error) {
             console.log(error);
         } else {
