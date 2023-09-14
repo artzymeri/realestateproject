@@ -162,14 +162,14 @@ const Posting = () => {
         }),
         option: (provided, state) => ({
           ...provided,
-          backgroundColor: state.isSelected ? 'black' : '#f3c68c',
-          color: state.isSelected ? '#f3c68c' : 'black',
+          backgroundColor: state.isSelected ? 'rgb(36,36,36)' : '#f3c68c',
+          color: state.isSelected ? '#f3c68c' : 'rgb(36,36,36)',
           cursor: 'pointer',
           zIndex: 999,
         }),
         placeholder: (provided) => ({
             ...provided,
-            color: 'black',
+            color: 'rgb(36,36,36)',
         }),
         menu: (provided) => ({
             ...provided,

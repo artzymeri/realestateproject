@@ -4,6 +4,7 @@
     height: 100%;
     width: 100%;
     gap: 10px;
+    overflow-y: hidden;
 }
 
 .manage-agents-nav {
@@ -36,6 +37,11 @@
     overflow-y: auto;
     position: relative;
 }
+
+.manage-agents-content::-webkit-scrollbar {
+    width: 0px;
+}
+
 
 .manage-agents-content-table {
     position: absolute;
