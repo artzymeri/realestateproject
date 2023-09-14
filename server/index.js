@@ -52,6 +52,20 @@ app.post('/editestate/:estateId' , (req, res)=> {
     })
 })
 
+app.post('/changepassword/:usernameofUser' , (req, res)=> {
+    const {usernameofUser} = req.params;
+    const password = req.body.password;
+    const hashedPassword = bcrypt.hashSync(password, 10);
+    const sqlUpdate = 'UPDATE users_table SET password=? WHERE username=?';
+
+    db.query(sqlUpdate, [hashedPassword, usernameofUser], (error, result)=> {
+        if(error) {
+            console.log(error);
+        } else {
+            console.log('Successful Change of Password!');
+        }
+    })
+})
 
 
 
@@ -61,6 +75,8 @@ app.delete('/deleteestates/:estateId', (req, res)=> {
     db.query(sqlDelete, [estateId], (error, result)=>{
         if(error){
             console.log(error);
+        }else {
+            console.log('Successful Deletion of Estate!')
         }
     });
 });
@@ -111,6 +127,7 @@ app.post('/login', (req, res) => {
         if (results.length === 0 || !bcrypt.compareSync(password, results[0].password)) {
             res.json({ message: 'Invalid credentials' });
         } else {
+            const userId = results[0].id;
             const usernameofUser = results[0].username;
             const profilePicture = results[0].profilepicture;
             const name = results[0].name;
@@ -118,7 +135,7 @@ app.post('/login', (req, res) => {
             const number = results[0].number;
             if (results[0].role === 'admin') {
                 const adminToken = jwt.sign({ username : username, role: 'admin' }, secretKey, { expiresIn : '1h' } )
-                res.json({adminToken, usernameofUser, profilePicture, name, surname, number });
+                res.json({adminToken, usernameofUser, profilePicture, name, surname, number, userId });
             } else {
                 const agentToken = jwt.sign({ username: username, role: 'agent' }, secretKey, { expiresIn : '1h' });
                 res.json({agentToken, usernameofUser, profilePicture, name, surname, number});
