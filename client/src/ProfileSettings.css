@@ -91,3 +91,63 @@
     font-size: 20px;
 }
 
+.hidden-profile-settings {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(36, 36, 36, 0.8);
+    color: #f3c68c;
+    display: none;
+}
+
+.password-changer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px;
+    background-color: rgb(36,36,36);
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px black;
+    gap: 20px;
+    width: 500px;
+    height: 500px;
+}
+
+.password-changer :is(input) {
+    background-color: #f3c68c;
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+    border-radius: 20px;
+    padding-left: 10px;
+    height: 40px;
+}
+
+.password-changer h1 {
+    font-size: ;
+}
+
+.password-changer p {
+    font-size: smaller;
+}
+
+.password-changer button {
+    background-color: black;
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+    border-radius: 5px;
+    padding: 10px;
+    color: #f3c68c;
+    cursor: pointer;
+}
+
+.password-changer button:hover{
+    background-color: rgb(12, 12, 12);
+}

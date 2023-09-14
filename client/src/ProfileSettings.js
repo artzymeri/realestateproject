@@ -13,6 +13,15 @@ const ProfileSettings = () => {
         <div className="profile-settings-body">
             <div className="profile-settings-nav"><h1>{nameofUser} {surnameofUser}'s Profile Settings Tab</h1></div>
             <div className="profile-settings-content">
+                <div className="hidden-profile-settings">
+                    <div className="password-changer">
+                        <h1>Password Change Tab</h1>
+                        <p>type your new password twice</p>
+                        <input type="password" />
+                        <input type="password" />
+                        <button>Change Password</button>
+                    </div>
+                </div>
                 <div className="profile-box profile">
                     <div className="profile-box-photo">
                          <img src={profilePictureofUser} />

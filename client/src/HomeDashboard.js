@@ -6,6 +6,9 @@ import './HomeDashboard.css'
 
 const HomeDashboard = () => {
 
+    const token = localStorage.getItem('token');
+    const userRole = localStorage.getItem('userRole');
+
     const [estatesData, setEstatesData] = useState([]);
     const [requestsData, setRequestsData] = useState([]);
 
@@ -22,9 +25,11 @@ const HomeDashboard = () => {
     return(
         <div className="edit-estates-body">
             <div className="edit-estates-nav"><h1>Home Tab</h1></div>
-            <div className="home-dashboard-content">
-                <div className="home-dashboard-element">Numri i shpalljeve : <p className="home-number-data">{estatesData.length}</p></div>
-                <div className="home-dashboard-element">Numri i kerkesave per regjistrim : <p className="home-number-data">{requestsData.length}</p></div>
+            <div className="home-dashboard-content-wrapper">
+                <div className="home-dashboard-content">
+                    <div className="home-dashboard-element">Numri i shpalljeve : <p className="home-number-data">{estatesData.length}</p></div>
+                    {token && userRole === 'admin' ? <div className="home-dashboard-element">Numri i kerkesave per regjistrim : <p className="home-number-data">{requestsData.length}</p></div> : null }
+                </div>
             </div>
         </div>
         

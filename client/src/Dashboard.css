@@ -45,9 +45,9 @@
     align-items: center;
     width: 20px;
     height: 20px;
-    padding-top: 2px;
     border-radius: 50%;
-    font-family: sans-serif;
+    font-size: small;
+    font-weight: 900;
 }
 
 .dashboard-left-side :is(button):hover {
@@ -142,4 +142,5 @@
     border-width: 1px;
     border-color: #f3c68c;
     box-shadow: 0px 0px 6px #f3c68c;
+    cursor: pointer;
 }

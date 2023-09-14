@@ -71,6 +71,7 @@ const DashboardAgent = () => {
         localStorage.removeItem('name');
         localStorage.removeItem('surname');
         localStorage.removeItem('number');
+        localStorage.removeItem('userRole');
         
         navigate('/registerandlogin');
     };
@@ -95,7 +96,7 @@ const DashboardAgent = () => {
                 <div className="dashboard-right-side-navbar">
                     <h1>{nameofUser} {surnameofUser}'s Dashboard</h1>
                     <div className="dashboard-right-side-navbar-name">
-                    <h1 id="hello">Hello and Welcome, <b>{nameofUser}</b></h1><img id="hello-image" src={profilePictureofUser} />
+                    <h1 id="hello">Hello and Welcome, <b>{nameofUser}</b></h1><img onClick={activateProfileSettings} id="hello-image" src={profilePictureofUser} />
                     </div>
                 </div>
                 {home ? <HomeDashboard /> : null}

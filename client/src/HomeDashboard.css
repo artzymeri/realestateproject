@@ -1,15 +1,18 @@
-.home-dashboard-content {
-    border-radius: 10px;
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
-    gap: 20px;
-    position: relative;
-    overflow-y: auto;
+.home-dashboard-content-wrapper{
     height: 100%;
     background-color: rgb(36,36,36);
-    padding: 20px;
+    border-radius: 10px;
+}
+
+.home-dashboard-content {
+    display: flex;
     flex-wrap: wrap;
+    gap: 15px;
+    padding: 20px;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: rgb(36,36,36);
+    border-radius: 10px;
 }
 
 .home-dashboard-element {
@@ -28,11 +31,12 @@
     background-color: rgb(36,36,36);
     width: 25px;
     height: 25px;
+    font-size: small;
     display: flex;
     justify-content: center;
     align-items: center;
     color: #f3c68c;
-    padding-bottom: 3px;
     border-radius: 50%;
     flex-shrink: 0;
+    font-weight: 400;
 }
