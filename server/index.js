@@ -65,6 +65,36 @@ app.post('/changepassword/:usernameofUser' , (req, res)=> {
             console.log('Successful Change of Password!');
         }
     })
+});
+
+
+app.post('/changedetails/:usernameofUser' , (req, res)=> {
+    const {usernameofUser} = req.params;
+    const {name, surname, number} = req.body;
+    const sqlUpdate = 'UPDATE users_table SET name=?, surname=?, number=? WHERE username=?';
+
+    db.query(sqlUpdate, [name, surname, number, usernameofUser], (error, result)=> {
+        if(error) {
+            console.log(error);
+        } else {
+            console.log('Successful Change of Details!');
+        }
+    })
+});
+
+
+app.post('/changeprofilepicture/:usernameofUser' , (req, res)=> {
+    const {usernameofUser} = req.params;
+    const profilepicture = req.body.profilepicture;
+    const sqlUpdate = 'UPDATE users_table SET profilepicture=? WHERE username=?';
+
+    db.query(sqlUpdate, [profilepicture, usernameofUser], (error, result)=> {
+        if(error) {
+            console.log(error);
+        } else {
+            console.log('Successful Change of Profile Picture!');
+        }
+    })
 })
 
 

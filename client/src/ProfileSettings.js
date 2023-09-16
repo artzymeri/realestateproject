@@ -26,7 +26,9 @@ const ProfileSettings = () => {
             <div className="profile-settings-content">
                 {activePassword ? <div className="hidden-profile-settings">
                     <div className="password-changer">
-                        <h1 id="x">X</h1>
+                        <h1 id="x" onClick={()=>{
+                            setActivePassword(false)
+                        }}>X</h1>
                         <h1>Password Change Tab</h1>
                         <p>type your new password twice</p>
                         <input placeholder="new password" type="password" value={password1} onChange={(e)=>{setPassword1(e.target.value)}}/>
@@ -39,8 +41,7 @@ const ProfileSettings = () => {
                                     }else{
                                         axios.post(`http://localhost:8080/changepassword/${usernameofUser}`, {password: password2});
                                         window.alert('Successful Change of Password');
-                                        setPassword1('');
-                                        setPassword2('');
+                                        setActivePassword(false);
                                     }
                                  
                                 }else{
@@ -55,7 +56,9 @@ const ProfileSettings = () => {
                 </div> : null}
                 {activeName ? <div className="hidden-profile-settings">
                     <div className="password-changer">
-                        <h1 id="x">X</h1>
+                        <h1 id="x" onClick={()=>{
+                            setActiveName(false)
+                        }}>X</h1>
                         <h1>Personal Details Change Tab</h1>
                         <p>Type your new name, surname and number</p>
                         <input placeholder="new name" type="text" value={name} onChange={(e)=>{setName(e.target.value)}}/>
@@ -63,54 +66,50 @@ const ProfileSettings = () => {
                         <input placeholder="new number" type="text" value={number} onChange={(e)=>{setNumber(e.target.value)}}/>
                         <button onClick={()=>{
                             try{
-                                if(password1 == password2){
-                                    if(password1.length < 8){
-                                        window.alert('password is less than 8 characters')
-                                    }else{
-                                        axios.post(`http://localhost:8080/changepassword/${usernameofUser}`, {password: password2});
-                                        window.alert('Successful Change of Password');
-                                        setPassword1('');
-                                        setPassword2('');
-                                    }
-                                 
+                                if(name !== '' || surname !== '' || number !== ''){
+                                    axios.post(`http://localhost:8080/changedetails/${usernameofUser}`, { name: name, surname: surname, number: number });
+                                    window.alert('Successful Change of Details');
+                                    setActiveName(false);
                                 }else{
-                                    window.alert('Passwords do not match!')
+                                    window.alert("Don't leave empty trays!")
                                 }
                             }catch(error){
                                 console.log(error);
                                 window.alert('Error!')
                             }
-                        }}>Change Password</button>
+                        }}>Change Details</button>
                     </div>
                 </div> : null}
                 {activeProfilePicture ? <div className="hidden-profile-settings">
                     <div className="password-changer">
-                        <h1 id="x">X</h1>
+                        <h1 id="x" onClick={()=>{
+                            setActiveProfilePicture(false)
+                        }}>X</h1>
                         <h1>Profile Picture Change Tab</h1>
                         <img id="newprofilepicture" src={profilePicture} />
                         <input id="profilepictureuploader" type="file" value={name} onChange={(e)=>{
-                            
+                            const fileReader = new FileReader();
+                            const loadedPicture = e.target.files[0];
+                            fileReader.readAsDataURL(loadedPicture);
+                            fileReader.onload = (e) => {
+                                setProfilePicture(e.target.result);
+                                //set localstorage for profilepicture
+                            }
                         }}/>
                         <button onClick={()=>{
                             try{
-                                if(password1 == password2){
-                                    if(password1.length < 8){
-                                        window.alert('password is less than 8 characters')
-                                    }else{
-                                        axios.post(`http://localhost:8080/changepassword/${usernameofUser}`, {password: password2});
-                                        window.alert('Successful Change of Password');
-                                        setPassword1('');
-                                        setPassword2('');
-                                    }
-                                 
+                                if(profilePicture.length > 0){
+                                    axios.post(`http://localhost:8080/changeprofilepicture/${usernameofUser}`, {profilepicture: profilePicture});
+                                    window.alert('Successful Change of Profile Picture');
+                                    setActiveProfilePicture(false)           
                                 }else{
-                                    window.alert('Passwords do not match!')
+                                    window.alert('Please choose a profile picture');
                                 }
                             }catch(error){
                                 console.log(error);
                                 window.alert('Error!')
                             }
-                        }}>Change Password</button>
+                        }}>Change Profile Picture</button>
                     </div>
                 </div> : null}
                 <div className="profile-box profile">
