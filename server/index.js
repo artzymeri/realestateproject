@@ -130,6 +130,18 @@ app.get('/get', (req, res)=> {
     });
 });
 
+app.get('/getestatedetails/:index', (req, res)=>{
+    const sqlSelect = 'SELECT * FROM estates_table WHERE id=?';
+    const {index} = req.params;
+    db.query(sqlSelect, [index], (error, result)=>{
+        if(error){
+            console.log(error)
+        }else{
+            console.log('NICE!')
+        }
+    }) 
+})
+
 app.get('/getusername/:username', (req, res) => {
     const sqlSelect = 'SELECT username FROM users_table WHERE username = ?';
     const usernameToCheck = req.params.username;

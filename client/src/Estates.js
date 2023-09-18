@@ -233,6 +233,15 @@ const Estates = () => {
         }
     }
 
+    const [hiddenEstate, setHiddenEstate] = useState(null);
+
+
+    const handleOpenInNewTab = (estateId) => {
+        const url = `/estate/${estateId}`;
+        const newTab = window.open(url, "_blank");
+        newTab.focus();
+      };
+
 
     return (
         <>
@@ -271,39 +280,42 @@ const Estates = () => {
             <div className="estates-filter-bottom"><h1 onClick={resetFilter}>Fshi të gjitha</h1><button onClick={filteringAction}>Kërko</button></div>
         </div>
             <div className="estates-container">
-                {filteredData.map((estate)=>{
+                {filteredData.map((estate, index)=>{
                     return (
-                        <div className="estate">
-                            {estate.posting ? <h1 id="estate-posting">{estate.posting}</h1> : null}
-                            {estate.type ? <h1 id="estate-type">{estate.type}</h1> : null}
-                            <Swiper id="swiper-estate"
-                                 slidesPerView={1}
-                            >
-                                {estate.images && JSON.parse(estate.images).map((image)=>{
-                                    return(
-                                    <SwiperSlide id="swiper-slide">
-                                        <img id="slide-image" src={image}/>
-                                    </SwiperSlide>
-                                    )
-                                })}
-                            </Swiper>
-                            <div className="estate-bottom-part">
-                                <h1 id="estate-title">{estate.title}</h1>
-                                <div className="estate-bottom-part-child-one">
-                                        <h1>{estate.price}€</h1>
-                                        <h1 id="estate-meter">{estate.meter} m<sup>&sup2;</sup></h1>
-                                        <h1><i class="ri-map-pin-line"></i> {estate.location}</h1>
-                                </div>
-                                <div className="estate-bottom-part-child-characteristics">
-                                    {estate.characteristics && JSON.parse(estate.characteristics).map((characteristic)=>{return(<h1 id="characteristic">{characteristic}</h1>)})}
-                                    <div id="characteristics-gradient"></div>
+                        <>
+                            <div className="estate">
+                                {estate.posting ? <h1 id="estate-posting">{estate.posting}</h1> : null}
+                                {estate.type ? <h1 id="estate-type">{estate.type}</h1> : null}
+                                <Swiper id="swiper-estate"
+                                    slidesPerView={1}
+                                >
+                                    {estate.images && JSON.parse(estate.images).map((image)=>{
+                                        return(
+                                        <SwiperSlide id="swiper-slide">
+                                            <img id="slide-image" src={image}/>
+                                        </SwiperSlide>
+                                        )
+                                    })}
+                                </Swiper>
+                                <div className="estate-bottom-part">
+                                    <h1 id="estate-title">{estate.title}</h1>
+                                    <div className="estate-bottom-part-child-one">
+                                            <h1>{estate.price}€</h1>
+                                            <h1 id="estate-meter">{estate.meter} m<sup>&sup2;</sup></h1>
+                                            <h1><i class="ri-map-pin-line"></i> {estate.location}</h1>
                                     </div>
-                                <div className="estate-bottom-part-child2">
-                                    <button>Shto tek favoritet</button>
-                                    <button>Shiko Detajet</button>
-                                </div>
-                            </div>          
-                        </div>
+                                    <div className="estate-bottom-part-child-characteristics">
+                                        {estate.characteristics && JSON.parse(estate.characteristics).map((characteristic)=>{return(<h1 id="characteristic">{characteristic}</h1>)})}
+                                        <div id="characteristics-gradient"></div>
+                                        </div>
+                                    <div className="estate-bottom-part-child2">
+                                        <button>Shto tek favoritet</button>
+                                        <button onClick={()=>handleOpenInNewTab(estate.id)}>Shiko Detajet</button>
+                                        
+                                    </div>
+                                </div>          
+                            </div>
+                        </>
                     )
                 })}
             </div>

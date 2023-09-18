@@ -70,6 +70,8 @@ const ProfileSettings = () => {
                                     axios.post(`http://localhost:8080/changedetails/${usernameofUser}`, { name: name, surname: surname, number: number });
                                     window.alert('Successful Change of Details');
                                     setActiveName(false);
+                                    localStorage.setItem('name', name);
+                                    localStorage.setItem('surname', surname);
                                 }else{
                                     window.alert("Don't leave empty trays!")
                                 }
@@ -93,7 +95,7 @@ const ProfileSettings = () => {
                             fileReader.readAsDataURL(loadedPicture);
                             fileReader.onload = (e) => {
                                 setProfilePicture(e.target.result);
-                                //set localstorage for profilepicture
+                                localStorage.setItem('profilepicture', e.target.result);
                             }
                         }}/>
                         <button onClick={()=>{

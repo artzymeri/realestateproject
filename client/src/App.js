@@ -8,6 +8,7 @@ import ProtectedRouteAdmin from './ProtectedRouteAdmin';
 import ProtectedRouteAgent from './ProtectedRouteAgent';
 import DashboardAdmin from './DashboardAdmin';
 import DashboardAgent from './DashboardAgent';
+import EstateDetails from './EstateDetails';
 const App = () => {
     return (
         <Router>
@@ -17,6 +18,7 @@ const App = () => {
                 <Route path="/registerandlogin" element={<RegisterandLogin />} />
                 <Route path="/dashboardadmin" element={<ProtectedRouteAdmin element={<DashboardAdmin />} />} />
                 <Route path="/dashboardagent" element={<ProtectedRouteAgent element={<DashboardAgent />} />} />
+                <Route path="/estate/:index" element={<EstateDetails />} />
             </Routes>
         </Router>
     );
