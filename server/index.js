@@ -138,6 +138,7 @@ app.get('/getestatedetails/:index', (req, res)=>{
             console.log(error)
         }else{
             console.log('NICE!')
+            res.send(result)
         }
     }) 
 })
