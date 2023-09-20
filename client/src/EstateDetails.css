@@ -7,18 +7,177 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 100px;
+    background-color: rgb(36,36,36);
 }
 
 .estate-details-content {
     width: 1000px;
+    height: 100%;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     border-radius: 15px;
-    box-shadow: 0px 0px 5px rgb(36,36,36);
+    box-shadow: 0px 0px 15px #f3c68c;
     padding: 20px;
-    border-width: 1px;
-    border-style: solid;
-    justify-content: center;
+    border-width: 0px;
+    justify-content: space-between;
     align-items: center;
     gap: 20px;
+    padding: 20px;
+    padding-top: 70px;
+    background-color: #f3c68c;
+    position: relative;
 }
+
+.estate-details-content-left,
+.estate-details-content-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 100%;
+    gap: 20px;
+}
+
+.estate-details-content-right img {
+    width: 120px;
+    height: 120px;
+    box-shadow: 0px 0px 8px rgb(36,36,36);
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+#estate-details-swiper {
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: 0px 0px 8px rgb(36,36,36);
+}
+
+#estate-details-swiper img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.estate-details-element {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    position: absolute;
+    background-color: rgb(36,36,36);
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
+    box-shadow: 0px 2px 8px rgb(36,36,36);
+}
+
+.estate-details-element h1 {
+    color: #f3c68c;
+}
+
+.estate-details-characteristics-container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 10px;
+}
+
+.estate-details-characteristics-container h1 {
+    display: flex;
+    font-size: small;
+    padding: 7px;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(36,36,36);
+    color: #f3c68c;
+    border-radius: 50px;
+    box-shadow: 0px 0px 8px rgb(36,36,36);
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+    color: black;
+    background-color: #f3c68c;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    box-shadow: 0px 0px 8px rgb(36,36,36);
+}
+
+.swiper-button-prev:after,
+.swiper-button-next:after {
+  font-size: 20px;
+}
+
+.estate-details-description {
+    width: 100%;
+    height: 300px;
+    border-style: solid;
+    border-radius: 10px;
+    padding: 5px;
+    border-width: 0px;
+    border-color: rgb(36,36,36);
+    color: rgb(36,36,36);
+    font-size: small;
+    box-shadow: 0px 0px 8px rgb(36,36,36);
+}
+
+.estate-swiper-abs-left,
+.estate-swiper-abs-right {
+    font-size: 15px;
+    padding: 8px;
+    background-color: #f3c68c;
+    color: rgb(36,36,36);
+    border-radius: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+    position: absolute;
+    top: 10px;
+    box-shadow: 0px 0px 8px rgb(36,36,36);
+}
+
+.estate-swiper-abs-left {
+    left: 10px;
+}
+
+.estate-swiper-abs-right {
+    right: 10px;
+}
+
+.estate-details-agent{
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    width: 100%;
+}
+
+.estate-details-content-right-child{
+    width: 100%;
+    padding: 20px;
+    border-radius: 15px;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 15px;
+    border-style: solid;
+    border-width: 0px;
+    box-shadow: 0px 0px 8px rgb(36,36,36);
+}
+
+.estate-details-agentdetails {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+

@@ -35,6 +35,9 @@ const Posting = () => {
     
 
     const submitPosting = () => {
+      const agentname = localStorage.getItem('name');
+      const agentprofilepicture = localStorage.getItem('profilepicture');
+      const agentnumber = localStorage.getItem('number');
         if (images.length > 0) {
             try {
                 const imagesArray = [];
@@ -46,7 +49,7 @@ const Posting = () => {
                          imagesArray.push(imageData);
                          if (imagesArray.length === images.length){
                             console.log(imagesArray);
-                            axios.post('http://localhost:8080/insertnewestate', { title: title, meter: meter, location: location, images: imagesArray, posting: posting, type: estateType, characteristics: characteristics, price: price, description: description });
+                            axios.post('http://localhost:8080/insertnewestate', { title: title, meter: meter, location: location, images: imagesArray, posting: posting, type: estateType, characteristics: characteristics, price: price, description: description, agentname: agentname, agentprofilepicture: agentprofilepicture, agentnumber: agentnumber });
                             window.alert('Posting has been completed successfully!');
                             window.location.reload();
 
